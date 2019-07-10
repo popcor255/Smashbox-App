@@ -8,8 +8,7 @@ install:
   - yarn && yarn audit
 
 script:
-  - yarn lint
-  - yarn test:coveralls server/build/js/main.js
+  - yarn test:coveralls server/build/js/app.js
 
 notifications:
   email: false
