@@ -1,13 +1,13 @@
 var gulp = require("gulp");
 var minifycss = require("gulp-clean-css");
-var browserSync = require('browser-sync').create();
+var browserSync = require("browser-sync").create();
 var uglify = require("gulp-uglify");
 var concatify = require("gulp-concat");
 var sourcemaps = require("gulp-sourcemaps");
 var minifyhtml = require("gulp-minify-html");
-var workbox = require('workbox-build');
-var babel = require('gulp-babel');
-var httpProxy = require('http-proxy');
+var workbox = require("workbox-build");
+var babel = require("gulp-babel");
+var jsdoc = require("gulp-jsdoc3");
 
 var dist = "./server/build";
 
@@ -18,6 +18,14 @@ var paths = {
   images: ["source/images/**/*"],
   content: ["source/*.html", "source/manifest.json"]
 };
+
+//Create Documentation based off javascript
+gulp.task("doc", function(cb) {
+  var config = require("./jsdoc.json");
+  return gulp
+    .src(["README.md", paths.scripts], { read: false })
+    .pipe(jsdoc(config, cb));
+});
 
 // Compress css files and outputs them to build/css/*.css
 gulp.task("styles", function() {
@@ -33,9 +41,11 @@ gulp.task("scripts", function() {
     .src(paths.scripts)
     .pipe(sourcemaps.init())
     .pipe(concatify("app.js"))
-    .pipe(babel({
-      presets: ["@babel/preset-env"]
-    }))
+    .pipe(
+      babel({
+        presets: ["@babel/preset-env"]
+      })
+    )
     .pipe(uglify())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(dist + "/js/"));
@@ -60,24 +70,25 @@ gulp.task("images", function() {
 });
 
 // Generate Service Workers
-gulp.task('generate-service-worker', () => {
-  return workbox.generateSW({
-    globDirectory: dist,
-    globPatterns: [
-      '\*\*/\*.{html,js,css,jpg,png}'
-    ],
-    swDest: dist + "/sw.js",
-    clientsClaim: true,
-    skipWaiting: true
-  }).then(({warnings}) => {
-    // In case there are any warnings from workbox-build, log them.
-    for (const warning of warnings) {
-      console.warn(warning);
-    }
-    console.info('Service worker generation completed.');
-  }).catch((error) => {
-    console.warn('Service worker generation failed:', error);
-  });
+gulp.task("generate-service-worker", () => {
+  return workbox
+    .generateSW({
+      globDirectory: dist,
+      globPatterns: ["**/*.{html,js,css,jpg,png}"],
+      swDest: dist + "/sw.js",
+      clientsClaim: true,
+      skipWaiting: true
+    })
+    .then(({ warnings }) => {
+      // In case there are any warnings from workbox-build, log them.
+      for (const warning of warnings) {
+        console.warn(warning);
+      }
+      console.info("Service worker generation completed.");
+    })
+    .catch(error => {
+      console.warn("Service worker generation failed:", error);
+    });
 });
 
 // Watches for changes to our files and executes required scripts
@@ -92,17 +103,25 @@ gulp.task("watch", function() {
 gulp.task("browserSync", function() {
   browserSync.init({
     server: {
-       baseDir: "./server/build"
+      baseDir: "./server/build"
     }
   });
 
-  gulp.watch("./server/build/*.html").on('change', browserSync.reload);
-  gulp.watch("./server/build/js/*.js").on('change', browserSync.reload);
-  gulp.watch("./server/build/css/*.css").on('change', browserSync.reload);
-
+  gulp.watch("./server/build/*.html").on("change", browserSync.reload);
+  gulp.watch("./server/build/js/*.js").on("change", browserSync.reload);
+  gulp.watch("./server/build/css/*.css").on("change", browserSync.reload);
 });
 
 gulp.task(
   "default",
-  gulp.parallel("styles", "scripts", "content", "images", "watch", "browserSync", "generate-service-worker")
+  gulp.parallel(
+    "styles",
+    "scripts",
+    "content",
+    "images",
+    "watch",
+    "browserSync",
+    "generate-service-worker",
+    "doc"
+  )
 );

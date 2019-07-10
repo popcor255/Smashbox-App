@@ -1,0 +1,15 @@
+sudo: false
+language: node_js
+
+node_js:
+  - 10
+
+install:
+  - yarn && yarn audit
+
+script:
+  - yarn lint
+  - yarn test:coveralls server/server.js
+
+notifications:
+  email: false
