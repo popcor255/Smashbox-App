@@ -9,7 +9,7 @@ install:
 
 script:
   - yarn lint
-  - yarn test:coveralls server/server.js
+  - yarn test:coveralls server/build/js/main.js
 
 notifications:
   email: false
