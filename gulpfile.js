@@ -8,7 +8,7 @@ var minifyhtml = require("gulp-minify-html");
 var workbox = require("workbox-build");
 var babel = require("gulp-babel");
 var jsdoc = require("gulp-jsdoc3");
-
+var process = require("process");
 var dist = "./server/build";
 
 // Paths to various files
@@ -121,7 +121,6 @@ gulp.task(
     "images",
     "watch",
     "browserSync",
-    "generate-service-worker",
-    "doc"
+    "generate-service-worker"
   )
 );
