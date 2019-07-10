@@ -5,7 +5,8 @@ node_js:
   - 10
 
 install:
-  - yarn && yarn audit
+  - yarn
+  - yarn audit
 
 script:
   - yarn test:coveralls server/build/js/app.js
