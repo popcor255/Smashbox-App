@@ -8,6 +8,7 @@ install:
 
 script:
   - yarn test:coveralls server/build/js/app.test.js
+  - 
 
 notifications:
   email: false
