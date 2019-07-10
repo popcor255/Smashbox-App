@@ -37,6 +37,6 @@
     "build": "gulp",
     "lint": "eslint",
     "test": "jest --watchAll",
-    "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls"
+    "test:coveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   }
 }
