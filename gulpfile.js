@@ -46,8 +46,6 @@ gulp.task("scripts", function() {
         presets: ["@babel/preset-env"]
       })
     )
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest(dist + "/js/"));
 });
 

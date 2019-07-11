@@ -1,2 +1,38 @@
-"use strict";var deferredPrompt,_litHtmlModule=require("https://unpkg.com/lit-html?module");function _templateObject(){var e=_taggedTemplateLiteral(["\n    <div>Hello World</div>\n  "]);return _templateObject=function(){return e},e}function _taggedTemplateLiteral(e,t){return t||(t=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}function init(){"serviceWorker"in navigator&&window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").then(function(e){console.log("SW registered: ",e)}).catch(function(e){console.log("SW registration failed: ",e)})})}function promptInstallBanner(){deferredPrompt.prompt(),deferredPrompt.userChoice.then(function(e){"accepted"===e.outcome?console.log("User accepted the A2HS prompt"):console.log("User dismissed the A2HS prompt"),deferredPrompt=null})}init(),window.onload=function(){window.addEventListener(" beforeinstallprompt",function(e){e.preventDefault(),deferredPrompt=e});var e=(0,_litHtmlModule.html)(_templateObject());(0,_litHtmlModule.render)(e,document.body),document.addEventListener("touchmove",function(e){1!==e.scale&&e.preventDefault()},!1);var n=0;document.addEventListener("touchend",function(e){var t=(new Date).getTime();t-n<=300&&e.preventDefault(),n=t},!1)},promptInstallBanner();
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uanMiXSwibmFtZXMiOlsiZGVmZXJyZWRQcm9tcHQiLCJfbGl0SHRtbE1vZHVsZSIsInJlcXVpcmUiLCJpbml0IiwibmF2aWdhdG9yIiwid2luZG93IiwiYWRkRXZlbnRMaXN0ZW5lciIsInNlcnZpY2VXb3JrZXIiLCJyZWdpc3RlciIsInRoZW4iLCJyZWdpc3RyYXRpb24iLCJjb25zb2xlIiwibG9nIiwicmVnaXN0cmF0aW9uRXJyb3IiLCJwcm9tcHRJbnN0YWxsQmFubmVyIiwicHJvbXB0IiwidXNlckNob2ljZSIsImNob2ljZVJlc3VsdCIsIm91dGNvbWUiLCJvbmxvYWQiLCJlIiwicHJldmVudERlZmF1bHQiLCJteVRlbXBsYXRlIiwiaHRtbCIsIl90ZW1wbGF0ZU9iamVjdCIsInJlbmRlciIsImRvY3VtZW50IiwiYm9keSIsImV2ZW50Iiwic2NhbGUiLCJsYXN0VG91Y2hFbmQiLCJub3ciLCJEYXRlIiwiZ2V0VGltZSJdLCJtYXBwaW5ncyI6ImFBQUEsSUFFQUEsZUFGQUMsZUFBQUMsUUFBQSx3VEFJQSxTQUFBQyxPQUNBLGtCQUFBQyxXQUNBQyxPQUFBQyxpQkFBQSxPQUFBLFdBQ0FGLFVBQUFHLGNBQ0FDLFNBQUEsVUFDQUMsS0FBQSxTQUFBQyxHQUNBQyxRQUFBQyxJQUFBLGtCQUFBRixLQUhBLE1BS0EsU0FBQUcsR0FDQUYsUUFBQUMsSUFBQSwyQkFBQUMsT0FnREEsU0FBQUMsc0JBQ0FkLGVBQUFlLFNBQ0FmLGVBQUFnQixXQUFBUCxLQUFBLFNBQUFRLEdBQ0EsYUFBQUEsRUFBQUMsUUFDQVAsUUFBQUMsSUFBQSxpQ0FFQUQsUUFBQUMsSUFBQSxrQ0FFQVosZUFBQSxPQWxEQUcsT0FFQUUsT0FBQWMsT0FBQSxXQUVBZCxPQUFBQyxpQkFBQSx1QkFBQSxTQUFBYyxHQUVBQSxFQUFBQyxpQkFHQXJCLGVBQUFvQixJQUdBLElBQUFFLEdBQUEsRUFBQUMsZUFBQUEsTUFBQUMsb0JBSUEsRUFBQXZCLGVBQUF3QixRQUFBSCxFQUFBSSxTQUFBQyxNQUVBRCxTQUFBcEIsaUJBQ0EsWUFDQSxTQUFBc0IsR0FDQSxJQUFBQSxFQUFBQyxPQUNBRCxFQUFBUCxtQkFHQSxHQUdBLElBQUFTLEVBQUEsRUFDQUosU0FBQXBCLGlCQUNBLFdBQ0EsU0FBQXNCLEdBQ0EsSUFBQUcsR0FBQSxJQUFBQyxNQUFBQyxVQUNBRixFQUFBRCxHQUFBLEtBQ0FGLEVBQUFQLGlCQUVBUyxFQUFBQyxJQUVBLElBZ0JBakIiLCJmaWxlIjoiYXBwLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgaHRtbCwgcmVuZGVyIH0gZnJvbSBcImh0dHBzOi8vdW5wa2cuY29tL2xpdC1odG1sP21vZHVsZVwiO1xyXG5cclxudmFyIGRlZmVycmVkUHJvbXB0O1xyXG5cclxuZnVuY3Rpb24gaW5pdCgpIHtcclxuICBpZiAoXCJzZXJ2aWNlV29ya2VyXCIgaW4gbmF2aWdhdG9yKSB7XHJcbiAgICB3aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcihcImxvYWRcIiwgKCkgPT4ge1xyXG4gICAgICBuYXZpZ2F0b3Iuc2VydmljZVdvcmtlclxyXG4gICAgICAgIC5yZWdpc3RlcihcIi9zdy5qc1wiKVxyXG4gICAgICAgIC50aGVuKHJlZ2lzdHJhdGlvbiA9PiB7XHJcbiAgICAgICAgICBjb25zb2xlLmxvZyhcIlNXIHJlZ2lzdGVyZWQ6IFwiLCByZWdpc3RyYXRpb24pO1xyXG4gICAgICAgIH0pXHJcbiAgICAgICAgLmNhdGNoKHJlZ2lzdHJhdGlvbkVycm9yID0+IHtcclxuICAgICAgICAgIGNvbnNvbGUubG9nKFwiU1cgcmVnaXN0cmF0aW9uIGZhaWxlZDogXCIsIHJlZ2lzdHJhdGlvbkVycm9yKTtcclxuICAgICAgICB9KTtcclxuICAgIH0pO1xyXG4gIH1cclxufVxyXG5cclxuaW5pdCgpO1xyXG5cclxud2luZG93Lm9ubG9hZCA9IGZ1bmN0aW9uIG1haW4oKSB7XHJcbiAgLy9hcHBlbmQgaW5zdGFsbEJhbm5lciB0byBmdW5jdGlvbiBwcm9tcHRJbnN0YWxsQmFubmVyKCk7XHJcbiAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoXCIgYmVmb3JlaW5zdGFsbHByb21wdFwiLCBmdW5jdGlvbihlKSB7XHJcbiAgICAvLyBQcmV2ZW50IENocm9tZSA2NyBhbmQgZWFybGllciBmcm9tIGF1dG9tYXRpY2FsbHkgc2hvd2luZyB0aGUgcHJvbXB0XHJcbiAgICBlLnByZXZlbnREZWZhdWx0KCk7XHJcblxyXG4gICAgLy8gU3Rhc2ggdGhlIGV2ZW50IHNvIGl0IGNhbiBiZSB0cmlnZ2VyZWQgbGF0ZXIuXHJcbiAgICBkZWZlcnJlZFByb21wdCA9IGU7XHJcbiAgfSk7XHJcblxyXG4gIGNvbnN0IG15VGVtcGxhdGUgPSBodG1sYFxyXG4gICAgPGRpdj5IZWxsbyBXb3JsZDwvZGl2PlxyXG4gIGA7XHJcblxyXG4gIHJlbmRlcihteVRlbXBsYXRlLCBkb2N1bWVudC5ib2R5KTtcclxuXHJcbiAgZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcihcclxuICAgIFwidG91Y2htb3ZlXCIsXHJcbiAgICBmdW5jdGlvbihldmVudCkge1xyXG4gICAgICBpZiAoZXZlbnQuc2NhbGUgIT09IDEpIHtcclxuICAgICAgICBldmVudC5wcmV2ZW50RGVmYXVsdCgpO1xyXG4gICAgICB9XHJcbiAgICB9LFxyXG4gICAgZmFsc2VcclxuICApO1xyXG5cclxuICB2YXIgbGFzdFRvdWNoRW5kID0gMDtcclxuICBkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKFxyXG4gICAgXCJ0b3VjaGVuZFwiLFxyXG4gICAgZnVuY3Rpb24oZXZlbnQpIHtcclxuICAgICAgdmFyIG5vdyA9IG5ldyBEYXRlKCkuZ2V0VGltZSgpO1xyXG4gICAgICBpZiAobm93IC0gbGFzdFRvdWNoRW5kIDw9IDMwMCkge1xyXG4gICAgICAgIGV2ZW50LnByZXZlbnREZWZhdWx0KCk7XHJcbiAgICAgIH1cclxuICAgICAgbGFzdFRvdWNoRW5kID0gbm93O1xyXG4gICAgfSxcclxuICAgIGZhbHNlXHJcbiAgKTtcclxufTtcclxuXHJcbmZ1bmN0aW9uIHByb21wdEluc3RhbGxCYW5uZXIoKSB7XHJcbiAgZGVmZXJyZWRQcm9tcHQucHJvbXB0KCk7XHJcbiAgZGVmZXJyZWRQcm9tcHQudXNlckNob2ljZS50aGVuKGNob2ljZVJlc3VsdCA9PiB7XHJcbiAgICBpZiAoY2hvaWNlUmVzdWx0Lm91dGNvbWUgPT09IFwiYWNjZXB0ZWRcIikge1xyXG4gICAgICBjb25zb2xlLmxvZyhcIlVzZXIgYWNjZXB0ZWQgdGhlIEEySFMgcHJvbXB0XCIpO1xyXG4gICAgfSBlbHNlIHtcclxuICAgICAgY29uc29sZS5sb2coXCJVc2VyIGRpc21pc3NlZCB0aGUgQTJIUyBwcm9tcHRcIik7XHJcbiAgICB9XHJcbiAgICBkZWZlcnJlZFByb21wdCA9IG51bGw7XHJcbiAgfSk7XHJcbn1cclxuXHJcbnByb21wdEluc3RhbGxCYW5uZXIoKTtcclxuIl19
+var deferredPrompt;
+
+function init() {
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function() {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .then(function(registration) {
+          console.log("SW registered: ", registration);
+        })
+        ["catch"](function(registrationError) {
+          console.log("SW registration failed: ", registrationError);
+        });
+    });
+  }
+}
+
+init();
+
+window.onload = function main() {
+  window.addEventListener("beforeinstallprompt", function(e) {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault(); // Stash the event so it can be triggered later.
+
+    deferredPrompt = e;
+  });
+};
+
+function promptInstall() {
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(function(choiceResult) {
+    if (choiceResult.outcome === "accepted") {
+      console.log("User accepted the A2HS prompt");
+    } else {
+      console.log("User dismissed the A2HS prompt");
+    }
+  });
+}

@@ -3,7 +3,6 @@
     "coverage": "^0.4.1",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
-    "gulp-coveralls": "^0.1.4",
     "gulp-jest": "^4.0.2",
     "gulp-jsdoc3": "^2.0.0",
     "jquery": "^3.4.1",
