@@ -4,12 +4,7 @@ const fs = require("fs");
 const https = require("https");
 const process = require("process");
 
-//changes
-//another one
-//another change
-//working with other stuff
 // viewed at http://localhost:3000
-//testing staging to productionww
 app.get("/api/:id", function(req, res) {
   res.sendFile(path.join(__dirname + "/manifest.json"));
 });
