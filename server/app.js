@@ -5,7 +5,7 @@ const https = require("https");
 const process = require("process");
 
 // viewed at http://localhost:3000
-//testing staging to production!
+//testing staging to production
 app.get("/api/:id", function(req, res) {
   res.sendFile(path.join(__dirname + "/manifest.json"));
 });
