@@ -16,7 +16,8 @@ var paths = {
   scripts: ["source/js/*.js"],
   styles: ["source/css/**/*.css"],
   images: ["source/images/**/*"],
-  content: ["source/*.html", "source/manifest.json"]
+  content: ["source/*.html", "source/manifest.json"],
+  package: ["package.json"]
 };
 
 //Create Documentation based off javascript
@@ -89,6 +90,11 @@ gulp.task("generate-service-worker", () => {
     });
 });
 
+//package.json to build file,
+gulp.task("package", function() {
+  return gulp.src(paths.package).pipe(gulp.dest("./server"));
+});
+
 // Watches for changes to our files and executes required scripts
 gulp.task("watch", function() {
   gulp.watch(paths.scripts, gulp.series("scripts"));
@@ -113,6 +119,7 @@ gulp.task("browserSync", function() {
 gulp.task(
   "default",
   gulp.parallel(
+    "package",
     "styles",
     "scripts",
     "content",
