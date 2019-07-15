@@ -9,13 +9,6 @@ install:
 script:
   - bash ./docker/install-kompose.sh
   - yarn test:coveralls server/build/js/app.test.js
-
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN
-  on:
-    branch: master
     
 notifications:
   email: false
