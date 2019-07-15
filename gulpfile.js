@@ -9,7 +9,7 @@ var workbox = require("workbox-build");
 var babel = require("gulp-babel");
 var jsdoc = require("gulp-jsdoc3");
 var process = require("process");
-var dist = "./server/app";
+var dist = "./build/app";
 
 // Paths to various files
 var paths = {
@@ -33,7 +33,7 @@ gulp.task("styles", function() {
   return gulp
     .src(paths.styles)
     .pipe(minifycss({ compatibility: "ie8" }))
-    .pipe(gulp.dest(dist + "/css/"));
+    .pipe(gulp.dest(dist + "/public/css/"));
 });
 
 // Concats & minifies js files and outputs them to app/js/app.js
@@ -47,7 +47,7 @@ gulp.task("scripts", function() {
         presets: ["@babel/preset-env"]
       })
     )
-    .pipe(gulp.dest(dist + "/js/"));
+    .pipe(gulp.dest(dist + "/public/js/"));
 });
 
 // Minifies our HTML files and outputs them to app/*.html
@@ -60,21 +60,21 @@ gulp.task("content", function() {
         quotes: true
       })
     )
-    .pipe(gulp.dest(dist));
+    .pipe(gulp.dest(dist + "/public"));
 });
 
 // Optimizes our image files and outputs them to app/image/*
 gulp.task("images", function() {
-  return gulp.src(paths.images).pipe(gulp.dest(dist + "/images/"));
+  return gulp.src(paths.images).pipe(gulp.dest(dist + "/public/images/"));
 });
 
 // Generate Service Workers
 gulp.task("generate-service-worker", () => {
   return workbox
     .generateSW({
-      globDirectory: dist,
+      globDirectory: dist + "/public",
       globPatterns: ["**/*.{html,js,css,jpg,png}"],
-      swDest: dist + "/sw.js",
+      swDest: dist + "/public/sw.js",
       clientsClaim: true,
       skipWaiting: true
     })
@@ -90,9 +90,9 @@ gulp.task("generate-service-worker", () => {
     });
 });
 
-//package.json to app file,
+//package.json, manifest and package-lock.json to app file,
 gulp.task("package", function() {
-  return gulp.src(paths.package).pipe(gulp.dest("./server/app"));
+  return gulp.src(paths.package).pipe(gulp.dest(dist));
 });
 
 // Watches for changes to our files and executes required scripts
@@ -107,13 +107,13 @@ gulp.task("watch", function() {
 gulp.task("browserSync", function() {
   browserSync.init({
     server: {
-      baseDir: "./server/app"
+      baseDir: dist + "/public"
     }
   });
 
-  gulp.watch("./server/app/*.html").on("change", browserSync.reload);
-  gulp.watch("./server/app/js/*.js").on("change", browserSync.reload);
-  gulp.watch("./server/app/css/*.css").on("change", browserSync.reload);
+  gulp.watch(dist + "/*.html").on("change", browserSync.reload);
+  gulp.watch(dist + "/js/*.js").on("change", browserSync.reload);
+  gulp.watch(dist + "/app/css/*.css").on("change", browserSync.reload);
 });
 
 gulp.task(
