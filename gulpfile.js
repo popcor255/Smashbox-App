@@ -9,7 +9,7 @@ var workbox = require("workbox-build");
 var babel = require("gulp-babel");
 var jsdoc = require("gulp-jsdoc3");
 var process = require("process");
-var dist = "./server/build";
+var dist = "./server/app";
 
 // Paths to various files
 var paths = {
@@ -17,7 +17,7 @@ var paths = {
   styles: ["source/css/**/*.css"],
   images: ["source/images/**/*"],
   content: ["source/*.html", "source/manifest.json"],
-  package: ["package.json"]
+  package: ["package.json", "package-lock.json", "README.md"]
 };
 
 //Create Documentation based off javascript
@@ -28,7 +28,7 @@ gulp.task("doc", function(cb) {
     .pipe(jsdoc(config, cb));
 });
 
-// Compress css files and outputs them to build/css/*.css
+// Compress css files and outputs them to app/css/*.css
 gulp.task("styles", function() {
   return gulp
     .src(paths.styles)
@@ -36,7 +36,7 @@ gulp.task("styles", function() {
     .pipe(gulp.dest(dist + "/css/"));
 });
 
-// Concats & minifies js files and outputs them to build/js/app.js
+// Concats & minifies js files and outputs them to app/js/app.js
 gulp.task("scripts", function() {
   return gulp
     .src(paths.scripts)
@@ -50,7 +50,7 @@ gulp.task("scripts", function() {
     .pipe(gulp.dest(dist + "/js/"));
 });
 
-// Minifies our HTML files and outputs them to build/*.html
+// Minifies our HTML files and outputs them to app/*.html
 gulp.task("content", function() {
   return gulp
     .src(paths.content)
@@ -63,7 +63,7 @@ gulp.task("content", function() {
     .pipe(gulp.dest(dist));
 });
 
-// Optimizes our image files and outputs them to build/image/*
+// Optimizes our image files and outputs them to app/image/*
 gulp.task("images", function() {
   return gulp.src(paths.images).pipe(gulp.dest(dist + "/images/"));
 });
@@ -90,9 +90,9 @@ gulp.task("generate-service-worker", () => {
     });
 });
 
-//package.json to build file,
+//package.json to app file,
 gulp.task("package", function() {
-  return gulp.src(paths.package).pipe(gulp.dest("./server"));
+  return gulp.src(paths.package).pipe(gulp.dest("./server/app"));
 });
 
 // Watches for changes to our files and executes required scripts
@@ -107,13 +107,13 @@ gulp.task("watch", function() {
 gulp.task("browserSync", function() {
   browserSync.init({
     server: {
-      baseDir: "./server/build"
+      baseDir: "./server/app"
     }
   });
 
-  gulp.watch("./server/build/*.html").on("change", browserSync.reload);
-  gulp.watch("./server/build/js/*.js").on("change", browserSync.reload);
-  gulp.watch("./server/build/css/*.css").on("change", browserSync.reload);
+  gulp.watch("./server/app/*.html").on("change", browserSync.reload);
+  gulp.watch("./server/app/js/*.js").on("change", browserSync.reload);
+  gulp.watch("./server/app/css/*.css").on("change", browserSync.reload);
 });
 
 gulp.task(

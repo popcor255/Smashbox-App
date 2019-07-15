@@ -9,7 +9,7 @@ app.get("/api/:id", function(req, res) {
   res.sendFile(path.join(__dirname + "/manifest.json"));
 });
 
-app.use(express.static(__dirname + "/build"));
+app.use(express.static(__dirname + "/app"));
 
 app.listen(3000, function() {
   console.log("Example app listening on port 3000");
