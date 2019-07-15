@@ -7,6 +7,7 @@ install:
   - yarn
 
 script:
+  - bash ./docker/install-kompose.sh
   - yarn test:coveralls server/build/js/app.test.js
 
 deploy:
