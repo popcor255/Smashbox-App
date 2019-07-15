@@ -129,3 +129,16 @@ gulp.task(
     "generate-service-worker"
   )
 );
+
+gulp.task(
+  "build",
+  gulp.parallel(
+    "package",
+    "styles",
+    "scripts",
+    "content",
+    "images",
+    "watch",
+    "generate-service-worker"
+  )
+);
