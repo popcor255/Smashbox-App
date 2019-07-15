@@ -9,6 +9,7 @@
     "lit-html": "^1.1.1",
     "path": "^0.12.7",
     "process": "^0.11.10",
+    "travis-cli": "^1.0.9",
     "workbox-build": "^4.3.1"
   },
   "devDependencies": {
