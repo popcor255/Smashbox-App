@@ -9,5 +9,12 @@ install:
 script:
   - yarn test:coveralls server/build/js/app.test.js
 
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
+    
 notifications:
   email: false
