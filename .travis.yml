@@ -1,3 +1,5 @@
+sudo: true
+
 language: node_js
 
 node_js:
@@ -7,7 +9,11 @@ install:
   - yarn
 
 script:
-  - bash ./docker/install-kompose.sh
+  - curl -L https://github.com/kubernetes/kompose/releases/download/v1.17.0/kompose-linux-amd64 -o kompose
+  - chmod +x kompose
+  - sudo mv ./kompose /usr/local/bin/kompose
+  - cd build
+  - kompose up
   - yarn test:coveralls server/build/js/app.test.js
     
 notifications:
