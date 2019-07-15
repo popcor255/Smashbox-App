@@ -1,7 +1,11 @@
 version: '3'
 services:
   web:
-    build: '../build/app'
+    image: 'frontend-js-smashbox'
+    build:
+        context: './app'
+        dockerfile: Dockerfile
+
     # Host port proxy to 80
     ports:
       - "80:3000"
@@ -15,7 +19,10 @@ services:
       - api
 
   api:
-    build: '../build/api'
+    image: 'backend-js-smashbox'
+    build:
+        context: './api'
+        dockerfile: Dockerfile
     # api host port defined the same as in the container
     links: 
       - db
