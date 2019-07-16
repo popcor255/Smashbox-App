@@ -4,46 +4,51 @@ services:
     image: 'popcor255bot/frontend-js-smashbox'
     build:
         context: './app'
-        dockerfile: Dockerfile
+        dockerfile: 'Dockerfile'
 
     # Host port proxy to 80
     ports:
-      - "80:3000"
+      - '80:3000'
     volumes:
-      - ./app/src:/app/src
+      - './app/src:/app/src'
     environment:
       # If a production enviroment is desired, set the APP_ENV variable to production
       # APP_ENV: 'production'
       APP_ENV: 'development'
     links:
-      - api
+      - 'api'
 
   api:
     image: 'popcor255bot/backend-js-smashbox'
     build:
         context: './api'
-        dockerfile: Dockerfile
+        dockerfile: 'Dockerfile'
     # api host port defined the same as in the container
     links: 
-      - db
+      - 'db'
     environment:
-      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: '!jigglynopuff!'
     ports:
-      - "3001:3001"
+      - '3001:3001'
     volumes:
-      - "./api:/api"
+      - './api:/api'
 
   db:
     # This image exposes the standard MySQL port (3306)
-    image: mysql:5.7
+    image: 'mysql:5.7'
     environment:
-      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: '!jigglynopuff!'
+    volumes:
+      - 'data:/var/lib/mysql'
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: 'phpmyadmin/phpmyadmin'
     links: 
-      - db
+      - 'db'
     # phpmyadmin port defined to 3002
     ports:
-      - "3002:80"
+      - '3002:80'
+
+volumes:
+  data:
     

@@ -19,12 +19,11 @@ COPY ./ ./
 # in case you accidentally install locally.)
 RUN npm install
 
-# Checks the enviroment variable in order to run the react
 CMD if [ ${APP_ENV} = production ]; \
 	then \
 		npm install \
 		npm install -g http-server && \
-		npm run build && \
+		npm run start && \
 		cd build && \
 		hs -p 3000; \
 	else \
