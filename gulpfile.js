@@ -139,7 +139,6 @@ gulp.task(
     "scripts",
     "content",
     "images",
-    "watch",
     "generate-service-worker"
   )
 );
