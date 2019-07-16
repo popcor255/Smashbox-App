@@ -18,13 +18,12 @@ install:
 
 script:
   - echo "$REGISTRY_USER"
-  - bash docker/install-kompose.sh
+  - bash kubernetes/install-kompose.sh
   - docker login docker.io -u=$REGISTRY_USER -p=$REGISTRY_PASS
-  - mkdir kubernetes
   - cd kubernetes
   - kompose --file ../build/docker-compose.yml convert
   - cd ..
-  - bash docker/install-kubectl.sh
+  - bash kubernetes/install-kubectl.sh
   - yarn test:coveralls server/build/js/app.test.js
     
 notifications:
