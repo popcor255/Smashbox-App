@@ -9,10 +9,11 @@
     "lit-html": "^1.1.1",
     "path": "^0.12.7",
     "process": "^0.11.10",
-    "travis-cli": "^1.0.9",
     "workbox-build": "^4.3.1"
   },
   "devDependencies": {
+    "constantinople": "^3.1.2",
+    "clean-css": "^4.2.1",
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.4",
     "@babel/polyfill": "^7.4.4",
