@@ -3,23 +3,6 @@ sudo: true
 services:
   - docker
 
-env:
-  global:
-    - REGISTRY_USER : 
-      secure: lurKyAU7P+T5ATFapaBaMPHPi1T+9AIzqBnmyPMb8z/RG3PcIDdXKuSaEnwnniPFBrrQowUoblfowxYL8U1bUUW6RgIIu/oqYwwzuQctu7jHP
-    eKGTYUQPjHPXXBt6kqUcUASxyvUjcGQhSWwMXd7OIbZaZ396ILOLQu/ajRaDI0K8qfsXWnGPT3LMWtHG73ji0wjRNjbSHpk3rYSSFVtV2DI/oPd8bBKL4lX6
-    wc6/2icekcPk+Ao9PIYmoV4tOYRBXBbaAUAuOqlHtlrQXXkcDbDAmS05Ma87XttK0py4EwTdmxwgCocU1oGi6L+Bh8Ak9cHVtgNsRryKG3Qxto4bZzrwM9EB
-    dMhQkBQFOMo86ybxs71unxsWnBQdIcQK3kU9U3b9Af5+MP5HL4/QasTYnwHYJGKzJ1z/kgMc7PGRDMNRrwDjXeKEE2BeQqnvyB5GXOmQXD8xg/03tfhB5NA2
-    Yd+DIHVDPims95SQtxt54o8fIa3npD4s+uvEO3U//bLg1x0jmSfy7Phd4Na0gR+APCDDRyeZDTVOCsMI6j54nA4bf+aaZFr1NJ4eEnQk3QdkIAX1irt2/Jc9
-    Q53qeijwk2OZ0FvC8JthFcK9cPnhv+6BGd/qfzPzOTzmjaSA/YFypLBXeDSeTCeV3Comndy8l56iv5X7R+D3CeQOF6aSMg=
-    - REGISTRY_PASS : 
-      secure: WzrSFeKGGNaQjDYszf18xS6brpONOasYFJ1oHE62lb4WscatGFhKtBBt97Ip5+BICUOMDdrPVPJJ3LoKHG/rymf0HLrjtFuze2HvJBIbPmgSp
-    b8tvcTuOXMiYEwmNjlMR3nS5QYL93MKxz5bgZW/IDL86ivhGCeAQ8qOZSwGskyJ75DDVQVc+rJYNRLq+UYBg+UQPXb9TP+kO6oNxirTk3lCtPU186/GwGvii
-    nHEUU0Me/XxTH8dqTEKnwQQHiVLPh989k5Gytz5bq5u5rxFHCXlq++iIF0HoIUOCC9F/K3ilHizisRJNnEVUHForl7QGXwTvpqMzKS9R8AyCg0PZGOhaWUXO
-    YfxMqeQRZTv/9DGlCjndnT8HA+wx0FDXeFKDZMs1ExwZ7Tlspd+IyxxBCMdtWBeZauEzBIrpxJEMvFVfetBp0a0/wS6uCVbnmhgcxjGYELokFUhi7Kl/0ebm
-    bPSuNsCWb5Rk9Cmq043ca0d1JHfoGuVXWc84jIhlbLdCzbb7h0wFTYSyjMsAgIidy93JrolX+a2BuQdsf+/zq2Yt2vfksDNLzEJJXFsxQC/Jr0YgHUdP9LHl
-    XgRsUsHjI35+DCompqitRrUsAz7X9dO5Mtra1k+3qlTyVEJ/2VFjiK/o68RnAkGXyPh75efBA0y5GgN5nnImJkR6fmbjb8=
-
 language: node_js
 
 node_js:
