@@ -24,6 +24,7 @@ script:
   - kompose --file ../build/docker-compose.yml convert
   - cd ..
   - bash kubernetes/install-kubectl.sh
+  - bash kubernetes/install-doctl.sh
   - yarn test:coveralls ./test/unit-tests/scripts/app.test.js
     
 notifications:
