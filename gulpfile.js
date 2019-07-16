@@ -11,6 +11,7 @@ var jsdoc = require("gulp-jsdoc3");
 var process = require("process");
 var dist = "./build/app";
 
+//
 // Paths to various files
 var paths = {
   scripts: ["source/js/*.js"],
