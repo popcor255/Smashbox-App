@@ -22,8 +22,9 @@ script:
   - chmod +x kompose
   - sudo mv ./kompose /usr/local/bin/kompose
   - docker login docker.io -u=$REGISTRY_USER -p=$REGISTRY_PASS
-  - cd build
-  - kompose up
+  - cd kubernetes
+  - kompose --file ../build/docker-compose.yml convert
+  - cd ..
   - yarn test:coveralls server/build/js/app.test.js
     
 notifications:
