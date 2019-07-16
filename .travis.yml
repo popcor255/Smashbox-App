@@ -23,7 +23,7 @@ script:
   - curl -L https://github.com/kubernetes/kompose/releases/download/v1.17.0/kompose-linux-amd64 -o kompose
   - chmod +x kompose
   - sudo mv ./kompose /usr/local/bin/kompose
-  - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
+  - docker login -u="$REGISTRY_USER" -p="$REGISTRY_PASS"
   - cd build
   - kompose up
   - yarn test:coveralls server/build/js/app.test.js
