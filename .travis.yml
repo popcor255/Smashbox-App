@@ -24,7 +24,7 @@ script:
   - kompose --file ../build/docker-compose.yml convert
   - cd ..
   - bash kubernetes/install-kubectl.sh
-  - yarn test:coveralls server/build/js/app.test.js
+  - yarn test:coveralls ./test/unit-tests/scripts/app.test.js
     
 notifications:
   email: false
