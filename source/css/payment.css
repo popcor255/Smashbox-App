@@ -53,36 +53,36 @@
 	padding-bottom: 8px;
 }
 
-.payment-form .products{
+.payment-form .details{
 	background-color: #f7fbff;
     padding: 25px;
 }
 
-.payment-form .products .item{
+.payment-form .details .item{
 	margin-bottom:1em;
 }
 
-.payment-form .products .item-name{
+.payment-form .details .item-name{
 	font-weight:600;
 	font-size: 0.9em;
 }
 
-.payment-form .products .item-description{
+.payment-form .details .item-description{
 	font-size:0.8em;
 	opacity:0.6;
 }
 
-.payment-form .products .item p{
+.payment-form .details .item p{
 	margin-bottom:0.2em;
 }
 
-.payment-form .products .price{
+.payment-form .details .price{
 	float: right;
 	font-weight: 600;
 	font-size: 0.9em;
 }
 
-.payment-form .products .total{
+.payment-form .details .total{
 	border-top: 1px solid rgba(0, 0, 0, 0.1);
 	margin-top: 10px;
 	padding-top: 19px;
@@ -114,20 +114,24 @@
     margin-top: 5px;
 }
 
+.custom-checkbox{
+	display: block;
+}
+
 @media (min-width: 576px) {
 	.payment-form .title {
 		font-size: 1.2em; 
 	}
 
-	.payment-form .products {
+	.payment-form .details {
 		padding: 40px; 
   	}
 
-	.payment-form .products .item-name {
+	.payment-form .details .item-name {
 		font-size: 1em; 
 	}
 
-	.payment-form .products .price {
+	.payment-form .details .price {
     	font-size: 1em; 
 	}
 

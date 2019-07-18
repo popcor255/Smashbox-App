@@ -14,6 +14,7 @@ var dist = "./build/app";
 //
 // Paths to various files
 var paths = {
+  dependencies: ["source/js/**/*"],
   scripts: ["source/js/*.js"],
   styles: ["source/css/**/*.css"],
   images: ["source/images/**/*"],
@@ -49,6 +50,10 @@ gulp.task("scripts", function() {
       })
     )
     .pipe(gulp.dest(dist + "/public/js/"));
+});
+
+gulp.task("dependencies", function() {
+  gulp.src(paths.dependencies).pipe(gulp.dest(dist + "/public/js/"));
 });
 
 // Minifies our HTML files and outputs them to app/*.html
@@ -120,9 +125,9 @@ gulp.task("browserSync", function() {
 gulp.task(
   "default",
   gulp.parallel(
+    "dependencies",
     "package",
     "styles",
-    "scripts",
     "content",
     "images",
     "watch",
@@ -134,9 +139,9 @@ gulp.task(
 gulp.task(
   "build",
   gulp.parallel(
+    "dependencies",
     "package",
     "styles",
-    "scripts",
     "content",
     "images",
     "generate-service-worker"

@@ -13,7 +13,7 @@
 .navbar{
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 0 1%;
     overflow: hidden;
     background-color: rgb(255, 255, 255);
     border-bottom: 1.25px solid rgb(0, 0, 0);
@@ -42,7 +42,7 @@
     display: inline-block;
 }
 
-.card {
+.item_card {
     border: 2.2px solid rgb(0, 0, 0);
     transition: 0.3s;
     width: 300px;
@@ -75,7 +75,7 @@
 }
 
 .buy_button {
-    margin: 0 auto;
+    margin: 0 auto 8.5% auto;
     max-width: 250px;
 	width: 40%;
 	border: 2px solid rgb(0, 0, 0);
@@ -110,6 +110,10 @@
     color: white;
 }
 
+#search{
+    display: inline-block;
+}
+
 @-webkit-keyframes Gradient {
 	0% {
 		background-position: 0% 50%
@@ -132,7 +136,7 @@
         display: none;
     }
 
-    .card{
+    .item_card{
         border: 0px solid rgb(0, 0, 0);
         width: 100%;
         height: 1px;
