@@ -1,8 +1,3 @@
-var body = document.body;
-var Swipe = new Hammer.Swipe();
-var deferredPrompt;
-var logo;
-
 function init() {
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
@@ -21,6 +16,14 @@ function init() {
 init();
 
 window.onload = function main() {
+  var containerElement = document.body;
+  var activeRegion = ZingTouch.Region(containerElement);
+  var ele = document.getElementById("master-container");
+  activeRegion.bind(ele, "swipe", function(e) {
+    //Perform Operations
+    console.log(e.detail);
+  });
+
   window.addEventListener("beforeinstallprompt", function(e) {
     // Prevent Chrome 67 and earlier from automatically showing the prompt
     e.preventDefault();
@@ -122,7 +125,3 @@ function getOffsetLeft(elem) {
   } while ((elem = elem.offsetParent));
   return offsetLeft;
 }
-
-Hammer(body).on("swipeleft", function() {
-  window.history.back();
-});

@@ -1042,8 +1042,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     return ha;
   }) : "undefined" != typeof module && module.exports ? module.exports = ha : a[c] = ha;
 }(window, document, "Hammer");
-var deferredPrompt;
-var logo;
 
 function init() {
   if ("serviceWorker" in navigator) {
@@ -1060,6 +1058,13 @@ function init() {
 init();
 
 window.onload = function main() {
+  var containerElement = document.body;
+  var activeRegion = ZingTouch.Region(containerElement);
+  var ele = document.getElementById("master-container");
+  activeRegion.bind(ele, "swipe", function (event) {
+    //Perform Operations
+    console.log("testing");
+  });
   window.addEventListener("beforeinstallprompt", function (e) {
     // Prevent Chrome 67 and earlier from automatically showing the prompt
     e.preventDefault();
@@ -1143,4 +1148,16 @@ function prompt() {
 
     window.location = "/payment.html";
   });
+}
+
+function getOffsetLeft(elem) {
+  var offsetLeft = 0;
+
+  do {
+    if (!isNaN(elem.offsetLeft)) {
+      offsetLeft += elem.offsetLeft;
+    }
+  } while (elem = elem.offsetParent);
+
+  return offsetLeft;
 }

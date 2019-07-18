@@ -245,11 +245,11 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "4e0f2ae51b43b938b67ab855cf449a9d"
+    "revision": "014eec3bdbfe55fde3a559e5d85f3dac"
   },
   {
     "url": "js/app.js",
-    "revision": "beeca5c15fa0618a92fe27aac0eb3d26"
+    "revision": "7a09c8970cb10bace7dbea1a246a3857"
   },
   {
     "url": "js/bootstrap/bootstrap.bundle.js",
@@ -269,15 +269,15 @@ self.__precacheManifest = [
   },
   {
     "url": "js/hammer.min.js",
-    "revision": "d41d8cd98f00b204e9800998ecf8427e"
+    "revision": "7dc2d222ecdcef384d150172d246e5ac"
   },
   {
     "url": "js/main.js",
-    "revision": "e3b4c5632fcb427025be244be6492973"
+    "revision": "1b29bfeb5618f9d0dbb8c62922e59563"
   },
   {
     "url": "payment.html",
-    "revision": "b26751df051e90603a69e1bea42cf572"
+    "revision": "6b44672c5fd78f8375014f650a4601bf"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
