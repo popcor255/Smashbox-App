@@ -37,7 +37,7 @@
   },
   "scripts": {
     "start": "node /app/app.js",
-    "build": "gulp",
+    "build": "gulp build",
     "lint": "eslint",
     "test": "node node_modules/jest/bin/jest.js --watchAll",
     "test:coverage": "npx jest --coverage",
