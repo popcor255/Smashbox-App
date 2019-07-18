@@ -1,4 +1,7 @@
+var body = document.body;
+var Swipe = new Hammer.Swipe();
 var deferredPrompt;
+var logo;
 
 function init() {
   if ("serviceWorker" in navigator) {
@@ -21,9 +24,48 @@ window.onload = function main() {
   window.addEventListener("beforeinstallprompt", function(e) {
     // Prevent Chrome 67 and earlier from automatically showing the prompt
     e.preventDefault();
-
+    title = document.getElementById("title");
     // Stash the event so it can be triggered later.
     deferredPrompt = e;
+
+    (function() {
+      var x = 1500; // 1500 miliseconds = 1.5 seconds
+      var mousePressed = false;
+      var timePressed = 0;
+      var timeHolding = 0;
+
+      function check() {
+        timeHolding = new Date().getTime() - timePressed;
+        if (timeHolding >= x) {
+          promptInstall();
+        }
+      }
+
+      title.addEventListener(
+        "mousedown",
+        function(ele) {
+          console.log(ele);
+
+          if (!mousePressed) {
+            mousePressed = true;
+            timePressed = new Date().getTime(); // or Date.now()
+            setTimeout(function() {
+              check();
+            }, x);
+          }
+        },
+        false
+      );
+
+      title.addEventListener(
+        "mouseup",
+        function() {
+          mousePressed = false;
+          timePressed = new Date().getTime();
+        },
+        false
+      );
+    })();
   });
 };
 
@@ -49,3 +91,38 @@ function getLocation(ele) {
     ele.value = position.coords.latitude + "," + position.coords.longitude;
   }
 }
+
+function prompt() {
+  swal(
+    {
+      title: "Search:",
+      text: "",
+      type: "input",
+      showCancelButton: true,
+      closeOnConfirm: false,
+      inputPlaceholder: "Lets find what your looking for"
+    },
+    function(inputValue) {
+      if (inputValue === false) return false;
+      if (inputValue === "") {
+        swal.showInputError("You need to write something!");
+        return false;
+      }
+      window.location = "/payment.html";
+    }
+  );
+}
+
+function getOffsetLeft(elem) {
+  var offsetLeft = 0;
+  do {
+    if (!isNaN(elem.offsetLeft)) {
+      offsetLeft += elem.offsetLeft;
+    }
+  } while ((elem = elem.offsetParent));
+  return offsetLeft;
+}
+
+Hammer(body).on("swipeleft", function() {
+  window.history.back();
+});

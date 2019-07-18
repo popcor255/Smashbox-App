@@ -104,6 +104,7 @@ gulp.task("package", function() {
 // Watches for changes to our files and executes required scripts
 gulp.task("watch", function() {
   gulp.watch(paths.scripts, gulp.series("scripts"));
+  gulp.watch(paths.dependencies, gulp.series("dependencies"));
   gulp.watch(paths.styles, gulp.series("styles"));
   gulp.watch(paths.content, gulp.series("content"));
   gulp.watch(paths.images, gulp.series("images"));

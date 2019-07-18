@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "bootstrap-sweetalert": "^1.0.1",
     "coverage": "^0.4.1",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
@@ -12,8 +13,6 @@
     "workbox-build": "^4.3.1"
   },
   "devDependencies": {
-    "constantinople": "^3.1.2",
-    "clean-css": "^4.2.1",
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.4",
     "@babel/polyfill": "^7.4.4",
@@ -24,6 +23,8 @@
     "babel-loader": "^8.0.6",
     "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.26.7",
+    "clean-css": "^4.2.1",
+    "constantinople": "^3.1.2",
     "coveralls": "^3.0.4",
     "eslint": "^6.0.1",
     "gulp": "^4.0.0",
