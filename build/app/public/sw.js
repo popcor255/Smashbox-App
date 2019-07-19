@@ -249,7 +249,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/app.js",
-    "revision": "4e007abc0c981e1c733fe2fa3a6b814f"
+    "revision": "054dfdb672a7b71708184ccbc94f3200"
   },
   {
     "url": "js/bootstrap/bootstrap.bundle.js",
@@ -273,7 +273,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/main.js",
-    "revision": "c4bbc2a89167a38a309953649334929b"
+    "revision": "5bb4924dea08f3aad36134f242e083bd"
   },
   {
     "url": "payment.html",

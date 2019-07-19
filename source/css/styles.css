@@ -11,8 +11,8 @@
 }
 
 .master-container{
-  -webkit-transition: all 2s; /* Safari prior 6.1 */
-  transition: all 2s;
+    -webkit-transition: all 2s; /* Safari prior 6.1 */
+    transition: all 2s;
 }
 
 .sa-input-error{
@@ -137,33 +137,33 @@
 }
 
 
-@media screen and (max-width: 315px) {
-    .header{
-        display: none;
-    }
-
-    .navbar{
-        display: none;
-    }
+@media screen and (max-width: 335px) {
 
     .item_card{
-        border: 0px solid rgb(0, 0, 0);
         width: 100%;
-        height: 1px;
     }
 
     .card-cover{
-        border: 0px solid rgb(0, 0, 0);
         width: 100%;
-    }
-
-    .price{
-        display: none;
-        width: 0px;
     }
 
     .submit{
         width: 100%;
         font-size: 12vw;
+    }
+
+    .buy_button {
+        margin: 3.25% auto 6.75% auto;
+        max-width: 250px;
+        width: 40%;
+        border: 2px solid rgb(0, 0, 0);
+        border-radius: 0px;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+    }
+
+    .price {
+        display: none;
     }
 }
