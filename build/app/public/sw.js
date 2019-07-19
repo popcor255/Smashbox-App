@@ -53,7 +53,7 @@ self.__precacheManifest = [
   },
   {
     "url": "css/styles.css",
-    "revision": "dcdf6620fd0a145a8b2fd50532cccd91"
+    "revision": "267895d4f788f3a4e933d8d70fedacf2"
   },
   {
     "url": "images/icons/icon-128x128.png",
@@ -245,11 +245,11 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "014eec3bdbfe55fde3a559e5d85f3dac"
+    "revision": "03b78cf9438d47e3b40d5a4eb6531f17"
   },
   {
     "url": "js/app.js",
-    "revision": "7a09c8970cb10bace7dbea1a246a3857"
+    "revision": "4e007abc0c981e1c733fe2fa3a6b814f"
   },
   {
     "url": "js/bootstrap/bootstrap.bundle.js",
@@ -269,15 +269,15 @@ self.__precacheManifest = [
   },
   {
     "url": "js/hammer.min.js",
-    "revision": "7dc2d222ecdcef384d150172d246e5ac"
+    "revision": "6dc4f32dac39f606538f236bf879438f"
   },
   {
     "url": "js/main.js",
-    "revision": "1b29bfeb5618f9d0dbb8c62922e59563"
+    "revision": "c4bbc2a89167a38a309953649334929b"
   },
   {
     "url": "payment.html",
-    "revision": "6b44672c5fd78f8375014f650a4601bf"
+    "revision": "c6e5054c5e87e3f07d0855609dd78294"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});

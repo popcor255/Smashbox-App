@@ -2,6 +2,11 @@
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+/*! Hammer.JS - v2.0.8 - 2016-04-23
+ * http://hammerjs.github.io/
+ *
+ * Copyright (c) 2016 Jorik Tangelder;
+ * Licensed under the MIT license */
 !function (a, b, c, d) {
   "use strict";
 
@@ -1058,12 +1063,23 @@ function init() {
 init();
 
 window.onload = function main() {
-  var containerElement = document.body;
-  var activeRegion = ZingTouch.Region(containerElement);
-  var ele = document.getElementById("master-container");
-  activeRegion.bind(ele, "swipe", function (event) {
-    //Perform Operations
-    console.log("testing");
+  var master_container = document.getElementById("master-container");
+  var hammer = new Hammer.Manager(master_container);
+  var swipe = new Hammer.Swipe();
+  var pan = new Hammer.Pan();
+  var speed = 150;
+  hammer.add(swipe);
+  hammer.add(pan);
+  hammer.on("panright", function (ev) {
+    master_container.style.transform = "translate(" + ev.deltaX + "px, 0px)";
+    console.log(ev);
+  });
+  hammer.on("panend", function (ev) {
+    master_container.style.transform = "translate(0px, 0px)";
+    console.log(ev);
+  });
+  hammer.on("swiperight", function () {
+    console.log(e);
   });
   window.addEventListener("beforeinstallprompt", function (e) {
     // Prevent Chrome 67 and earlier from automatically showing the prompt
@@ -1148,16 +1164,4 @@ function prompt() {
 
     window.location = "/payment.html";
   });
-}
-
-function getOffsetLeft(elem) {
-  var offsetLeft = 0;
-
-  do {
-    if (!isNaN(elem.offsetLeft)) {
-      offsetLeft += elem.offsetLeft;
-    }
-  } while (elem = elem.offsetParent);
-
-  return offsetLeft;
 }

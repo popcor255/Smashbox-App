@@ -16,12 +16,27 @@ function init() {
 init();
 
 window.onload = function main() {
-  var containerElement = document.body;
-  var activeRegion = ZingTouch.Region(containerElement);
-  var ele = document.getElementById("master-container");
-  activeRegion.bind(ele, "swipe", function(e) {
-    //Perform Operations
-    console.log(e.detail);
+  var master_container = document.getElementById("master-container");
+  var hammer = new Hammer.Manager(master_container);
+  var swipe = new Hammer.Swipe();
+  var pan = new Hammer.Pan();
+  var speed = 150;
+
+  hammer.add(swipe);
+  hammer.add(pan);
+
+  hammer.on("pan", function(ev) {
+    master_container.style.transform = "translate(" + ev.deltaX + "px, 0px)";
+    console.log(ev);
+  });
+
+  hammer.on("panend", function(ev) {
+    master_container.style.transform = "translate(0px, 0px)";
+    console.log(ev);
+  });
+
+  hammer.on("swipeleft", function() {
+    console.log(e);
   });
 
   window.addEventListener("beforeinstallprompt", function(e) {
