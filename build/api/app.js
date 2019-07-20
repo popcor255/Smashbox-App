@@ -6,6 +6,7 @@ var logger = require("morgan");
 const mysql = require("mysql");
 const cors = require("cors");
 
+var smashboxRouter = require("./routes/smashbox");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
@@ -36,6 +37,7 @@ app.use(cookieParser());
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/smashbox", smashboxRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

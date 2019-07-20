@@ -53,7 +53,7 @@ gulp.task("scripts", function() {
 });
 
 gulp.task("dependencies", function() {
-  gulp.src(paths.dependencies).pipe(gulp.dest(dist + "/public/js/"));
+  return gulp.src(paths.dependencies).pipe(gulp.dest(dist + "/public/js/"));
 });
 
 // Minifies our HTML files and outputs them to app/*.html
