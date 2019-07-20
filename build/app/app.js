@@ -16,14 +16,16 @@ app.get("/api/:id", function(req, res) {
 });
 
 app.get("/smashbox/product_type/:id", function(req, res, next) {
-  request(
-    "http://localhost:3001/smashbox/product_type/" + req.params.id,
-    function(error, response, body) {
-      res.json(body);
-    }
-  );
+  request("http://api:3001/smashbox/product_type/" + req.params.id, function(
+    error,
+    response,
+    body
+  ) {
+    console.log(body);
+    res.json(body);
+  });
 });
 
-app.listen(3000, function() {
-  console.log("Example app listening on port 3000");
+app.listen(80, function() {
+  console.log("Example app listening on port 80");
 });

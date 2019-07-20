@@ -1,23 +1,15 @@
-// Set up our HTTP request
-var xhr = new XMLHttpRequest();
+function getRequest(url, callback) {
+  // How can I use this callback?
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function() {
+    if (request.readyState == 4 && request.status == 200) {
+      callback(request.responseText); // Another callback here
+    }
+  };
+  request.open("GET", url);
+  request.send();
+}
 
-// Setup our listener to process completed requests
-xhr.onload = function() {
-  // Process our return data
-  if (xhr.status >= 200 && xhr.status < 300) {
-    // What do when the request is successful
-    console.log("success!", xhr);
-  } else {
-    // What do when the request fails
-    console.log("The request failed!");
-  }
-
-  // Code that should run regardless of the request status
-  console.log("This always runs...");
-};
-
-// Create and send a GET request
-// The first argument is the post type (GET, POST, PUT, DELETE, etc.)
-// The second argument is the endpoint URL
-xhr.open("GET", "http://localhost/smashbox/product_type/lipstick");
-xhr.send();
+function getProduct(name, cb) {
+  getRequest("http://localhost/smashbox/product_type/" + name, mycallback);
+}

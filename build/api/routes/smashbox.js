@@ -8,7 +8,7 @@ router.get("/product_type/:id", function(req, res, next) {
     "http://makeup-api.herokuapp.com/api/v1/products.json?brand=smashbox&product_type=" +
       req.params.id,
     function(error, response, body) {
-      res.send(body);
+      res.status(200).send(body);
     }
   );
 });

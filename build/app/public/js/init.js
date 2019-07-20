@@ -52,7 +52,7 @@ function loadScript(src, script, callback) {
   script = document.createElement("script");
   script.onerror = function() {
     // handling error when loading script
-    alert("Error to handle");
+    alert("Error to handle: Script not Loaded");
   };
   script.onload = function() {
     console.log(src + " loaded ");
