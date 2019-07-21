@@ -61,7 +61,7 @@ self.__precacheManifest = [
   },
   {
     "url": "css/styles.css",
-    "revision": "c9a568c98783a76c69cf71af454fe962"
+    "revision": "5db50affe98d3dd5b4c9698ac453a363"
   },
   {
     "url": "images/icons/icon-128x128.png",
@@ -121,11 +121,11 @@ self.__precacheManifest = [
   },
   {
     "url": "js/utils/alerts.js",
-    "revision": "448d73c8dcadbbb104bd5461756e3b67"
+    "revision": "0e3c9a1a4186717dca5ada43c2cc8bc6"
   },
   {
     "url": "js/utils/api.js",
-    "revision": "0ebc8c9124246bb7553a71c54909175d"
+    "revision": "d45eaeeee3827be7f887b2e185c1d804"
   },
   {
     "url": "js/utils/catalog.js",
