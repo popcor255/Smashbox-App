@@ -25,7 +25,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [
   {
     "url": "catalog.html",
-    "revision": "bd44bde757182ebf09f7dd96cffa74ff"
+    "revision": "149f8cd002e94ffb7f81c45638e9e693"
   },
   {
     "url": "css/bootstrap/bootstrap-grid.css",
@@ -113,11 +113,15 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "a0a441d3d73b9f371c18434d3ff0cb05"
+    "revision": "d2f8edb5256e9675d4ca8bf8c8924c21"
+  },
+  {
+    "url": "js/app.js",
+    "revision": "0e6aabead7ac5959010eb48fe3e886ac"
   },
   {
     "url": "js/init.js",
-    "revision": "333a8345608b05cc7a02f88d7144acbb"
+    "revision": "fc47115a7c3075791540c9647867e19d"
   },
   {
     "url": "js/utils/alerts.js",
@@ -136,12 +140,16 @@ self.__precacheManifest = [
     "revision": "00831b8438d0c8c7cd57c916e6acd1c9"
   },
   {
+    "url": "js/utils/swInit.js",
+    "revision": "b813fc2b0fa2c968fb8d87bdc879be9e"
+  },
+  {
     "url": "js/utils/swPrompt.js",
-    "revision": "5ec934789ca19dd86a8cfb0dccbe6947"
+    "revision": "1953842616d7a995dda842b22c30e32f"
   },
   {
     "url": "payment.html",
-    "revision": "eadb6d57894fdfc4590e4b3a70367f78"
+    "revision": "ea8766abdbf1eae19279f5656efc56a9"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
