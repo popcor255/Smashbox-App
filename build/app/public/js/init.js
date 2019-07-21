@@ -1,8 +1,7 @@
 var files = [
-    "../sw.js",
     "../js/utils/api.js",
-    "../js/utils/alerts.js",
     "../js/utils/swPrompt.js",
+    "../js/utils/alerts.js",
     "../js/utils/geolocation.js",
     "../js/utils/catalog.js"
 ];

@@ -1,84 +1,88 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Payment</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <link rel="stylesheet" href="../css/payment.css">
-  <link rel="stylesheet" href="../css/bootstrap/bootstrap-reboot.min.css">
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js'></script>
-  <script src='../js/init.js'></script>
+    <title>Payment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="../css/payment.css">
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap-reboot.min.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js'></script>
+    <script src='../js/init.js'></script>
+    <script src='../js/utils/swInit.js'></script>
 </head>
+
 <body>
-  <div id="master-container">
-    <main class="page payment-page">
-      <section class="payment-form dark">
-        <div class="container">
-          <div class="block-heading">
-            <h2>Payment</h2>
-            <p>This is the checkout for Smashbox Travel.</p>
-          </div>
-          <form>
-            <div class="details">
-              <h3 class="title">Checkout</h3>
-              <div class="item">
-                <span class="price">$200</span>
-                <p class="item-name">Product 1</p>
-                <p class="item-description">Lorem ipsum dolor sit amet</p>
-              </div>
-              <div class="item">
-                <span class="price">$120</span>
-                <p class="item-name">Product 2</p>
-                <p class="item-description">Lorem ipsum dolor sit amet</p>
-              </div>
-              <div class="item custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                  <label class="custom-control-label" for="defaultUnchecked">Pick-up Luggage</label>
-              </div>
-              <div class="total">Total<span class="price">$320</span></div>
-            </div>
-            <div class="card-details">
-              <h3 class="title">Customer Details</h3>
-              <div class="row">
-                <div class="form-group col-sm-7">
-                    <label for="card-holder">Name</label>
-                    <input id="card-holder" type="text" class="form-control" placeholder="Full Name" aria-label="Airport Holder" aria-describedby="basic-addon1">
+    <div id="master-container">
+        <main class="page payment-page">
+            <section class="payment-form dark">
+                <div class="container">
+                    <div class="block-heading">
+                        <h2>Payment</h2>
+                        <p>This is the checkout for Smashbox Travel.</p>
+                    </div>
+                    <form>
+                        <div class="details">
+                            <h3 class="title">Checkout</h3>
+                            <div class="item">
+                                <span class="price">$200</span>
+                                <p class="item-name">Product 1</p>
+                                <p class="item-description">Lorem ipsum dolor sit amet</p>
+                            </div>
+                            <div class="item">
+                                <span class="price">$120</span>
+                                <p class="item-name">Product 2</p>
+                                <p class="item-description">Lorem ipsum dolor sit amet</p>
+                            </div>
+                            <div class="item custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                                <label class="custom-control-label" for="defaultUnchecked">Pick-up Luggage</label>
+                            </div>
+                            <div class="total">Total<span class="price">$320</span></div>
+                        </div>
+                        <div class="card-details">
+                            <h3 class="title">Customer Details</h3>
+                            <div class="row">
+                                <div class="form-group col-sm-7">
+                                    <label for="card-holder">Name</label>
+                                    <input id="card-holder" type="text" class="form-control" placeholder="Full Name" aria-label="Airport Holder" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="form-group col-sm-7">
+                                    <label for="card-holder">E-mail</label>
+                                    <input id="card-holder" type="text" class="form-control" placeholder="customer@company.com" aria-label="Airport Holder" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="form-group col-sm-5">
+                                    <label for="card-holder">Location</label>
+                                    <input id="card-holder" onclick="getLocation(this)" type="text" class="form-control" placeholder="Airport Location" aria-label="Airport Holder" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="form-group col-sm-7">
+                                    <label for="card-holder">Destination</label>
+                                    <input id="card-holder" type="text" class="form-control" placeholder="Airport Location" aria-label="Airport Holder" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="form-group col-sm-5">
+                                    <label for="">Gate</label>
+                                    <div class="input-group expiration-date">
+                                        <input type="text" class="form-control" placeholder="Gate Number" aria-label="MM" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <button type="button" class="btn btn-primary btn-block">Proceed</button>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <button type="button" onclick="javascript:window.location.href='/'" class="btn btn-secondary btn-block">Go Back</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group col-sm-7">
-                    <label for="card-holder">E-mail</label>
-                    <input id="card-holder" type="text" class="form-control" placeholder="customer@company.com" aria-label="Airport Holder" aria-describedby="basic-addon1">
-                </div>
-                <div class="form-group col-sm-5">
-                  <label for="card-holder">Location</label>
-                  <input id="card-holder" onclick="getLocation(this)" type="text" class="form-control" placeholder="Airport Location" aria-label="Airport Holder" aria-describedby="basic-addon1">
-                </div>
-                <div class="form-group col-sm-7">
-                  <label for="card-holder">Destination</label>
-                  <input id="card-holder" type="text" class="form-control" placeholder="Airport Location" aria-label="Airport Holder" aria-describedby="basic-addon1">
-                </div>
-                <div class="form-group col-sm-5">
-                  <label for="">Gate</label>
-                  <div class="input-group expiration-date">
-                    <input type="text" class="form-control" placeholder="Gate Number" aria-label="MM" aria-describedby="basic-addon1">
-                  </div>
-                </div>
-                <div class="form-group col-sm-12">
-                  <button type="button" class="btn btn-primary btn-block">Proceed</button>
-                </div>
-                <div class="form-group col-sm-12">
-                  <button type="button" onclick="javascript:window.location.href='/'"class="btn btn-secondary btn-block">Go Back</button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </section>
-    </main>
-  </div>
+            </section>
+        </main>
+    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>
