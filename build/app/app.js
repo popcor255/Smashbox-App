@@ -11,12 +11,12 @@ const request = require("request");
 app.use(express.static(__dirname + "/public"));
 
 //viewed at http://localhost:3000
-app.get("/api/:id", function(req, res) {
+app.get("/api/:id", function (req, res) {
   res.sendFile(path.join(__dirname + "/manifest.json"));
 });
 
-app.get("/smashbox/product_type/:id", function(req, res, next) {
-  request("http://api:3001/smashbox/product_type/" + req.params.id, function(
+app.get("/smashbox/product_type/:id", function (req, res, next) {
+  request("http://api:3001/smashbox/product_type/" + req.params.id, function (
     error,
     response,
     body
@@ -26,6 +26,11 @@ app.get("/smashbox/product_type/:id", function(req, res, next) {
   });
 });
 
-app.listen(80, function() {
+//viewed at http://localhost:3000
+app.get("/catalog/:id", function (req, res) {
+  res.sendFile(path.join(__dirname + "/public/catalog.html"));
+});
+
+app.listen(80, function () {
   console.log("Example app listening on port 80");
 });
