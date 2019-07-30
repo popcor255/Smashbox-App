@@ -1,4 +1,5 @@
 var files = [
+    "../js/utils/Cart.js",
     "../js/utils/api.js",
     "../js/utils/swPrompt.js",
     "../js/utils/alerts.js",
@@ -56,7 +57,6 @@ function loadScript(src, script, callback) {
         alert("Error to handle");
     };
     script.onload = function() {
-        console.log(src + " loaded ");
         callback();
     };
     script.src = src;

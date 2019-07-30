@@ -61,7 +61,7 @@ self.__precacheManifest = [
   },
   {
     "url": "css/styles.css",
-    "revision": "c9a568c98783a76c69cf71af454fe962"
+    "revision": "2bca5ec3c685e9221d5b21bea25d8e17"
   },
   {
     "url": "images/icons/icon-128x128.png",
@@ -117,11 +117,11 @@ self.__precacheManifest = [
   },
   {
     "url": "js/app.js",
-    "revision": "0e6aabead7ac5959010eb48fe3e886ac"
+    "revision": "d9e5071c884f4cc6ad16d0f8f91e43bd"
   },
   {
     "url": "js/init.js",
-    "revision": "fc47115a7c3075791540c9647867e19d"
+    "revision": "08cbc60834e918e80266375debbf8d37"
   },
   {
     "url": "js/utils/alerts.js",
@@ -129,7 +129,11 @@ self.__precacheManifest = [
   },
   {
     "url": "js/utils/api.js",
-    "revision": "d45eaeeee3827be7f887b2e185c1d804"
+    "revision": "35624bfe1ab29da39451b171a7ba9f9a"
+  },
+  {
+    "url": "js/utils/Cart.js",
+    "revision": "7f8dab362f9aa9dc34bd8f0f5b4bb3d0"
   },
   {
     "url": "js/utils/catalog.js",

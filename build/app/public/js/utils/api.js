@@ -1,3 +1,5 @@
+Cart.init();
+
 function getRequest(url, callback) {
     // How can I use this callback?
     var request = new XMLHttpRequest();
@@ -20,7 +22,7 @@ function loadItems(catalog) {
     catalog = JSON.parse(catalog);
     for (i = 0; i < catalog.length; i++) {
         list.innerHTML += ("<div class='card-container'>" +
-            "<a href='./index.html' class='item_card'>" +
+            "<a href='javascript:selectColor()' class='item_card'>" +
             "<img class='card-cover' src='" + falsey(catalog[i].image_link) + "' alt='test image' />" +
             "<div class='header'>" +
             "<h3 class='item-card item-text'><b>" + falsey(catalog[i].name) + "</b></h3>" +
@@ -30,6 +32,26 @@ function loadItems(catalog) {
             "</div>");
 
     }
+}
+
+function promptItem(item) {
+    Swal.fire({
+        title: 'Are you sure you want to add this to cart?',
+        text: "This will add the item to the cart",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+    }).then((result) => {
+        addItem(item);
+    })
+}
+
+function addItem(item) {
+    Cart.addItem({
+        id: item
+    });
 }
 
 function falsey(value) {
