@@ -117,11 +117,11 @@ self.__precacheManifest = [
   },
   {
     "url": "js/app.js",
-    "revision": "d9e5071c884f4cc6ad16d0f8f91e43bd"
+    "revision": "c84889f724f0ec0fb8576e9dcf824345"
   },
   {
     "url": "js/init.js",
-    "revision": "08cbc60834e918e80266375debbf8d37"
+    "revision": "692052384844ed92965df3b30794a477"
   },
   {
     "url": "js/utils/alerts.js",
@@ -129,7 +129,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/utils/api.js",
-    "revision": "35624bfe1ab29da39451b171a7ba9f9a"
+    "revision": "306542b07107b9c3a697da9c6cc9306f"
   },
   {
     "url": "js/utils/Cart.js",
@@ -142,6 +142,10 @@ self.__precacheManifest = [
   {
     "url": "js/utils/geolocation.js",
     "revision": "00831b8438d0c8c7cd57c916e6acd1c9"
+  },
+  {
+    "url": "js/utils/loadImage.js",
+    "revision": "3858972857ab56fdccd05e1a6669c12a"
   },
   {
     "url": "js/utils/swInit.js",
@@ -157,3 +161,5 @@ self.__precacheManifest = [
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+workbox.routing.registerRoute(/http:\/\/localhost\/smashbox\/product_type\//, new workbox.strategies.CacheFirst(), 'GET');

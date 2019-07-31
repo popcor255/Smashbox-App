@@ -1,5 +1,29 @@
 Cart.init();
 
+function cacheRequest() {
+
+    var items = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lipliner", "lipstick", "mascara", "nailpolish"];
+
+    for (var i = 0; i < items.length; i++) {
+        getRequest("http://localhost/smashbox/product_type/" + items[i], function(response) {
+            response = JSON.parse(response);
+            for (var j = 0; j < response.length; j++) {
+                loadImg({ src: response[j].image_link, maxSeconds: 10 }, function(status) {
+                    if (status.err) {
+                        // handle error
+                        console.log("failed to load image");
+                        return;
+                    }
+                    console.log("image loaded");
+                    // you got the img within status.img
+                });
+            }
+        });
+    }
+}
+
+cacheRequest();
+
 function getRequest(url, callback) {
     // How can I use this callback?
     var request = new XMLHttpRequest();
@@ -22,7 +46,7 @@ function loadItems(catalog) {
     catalog = JSON.parse(catalog);
     for (i = 0; i < catalog.length; i++) {
         list.innerHTML += ("<div class='card-container'>" +
-            "<a href='javascript:selectColor()' class='item_card'>" +
+            "<a href='javascript:promptItem(this)' class='item_card'>" +
             "<img class='card-cover' src='" + falsey(catalog[i].image_link) + "' alt='test image' />" +
             "<div class='header'>" +
             "<h3 class='item-card item-text'><b>" + falsey(catalog[i].name) + "</b></h3>" +
@@ -35,7 +59,7 @@ function loadItems(catalog) {
 }
 
 function promptItem(item) {
-    Swal.fire({
+    swal({
         title: 'Are you sure you want to add this to cart?',
         text: "This will add the item to the cart",
         type: 'warning',
@@ -60,13 +84,4 @@ function falsey(value) {
     }
 
     return "";
-}
-
-function getColors(arr) {
-    var output = "";
-    for (var i = 0; i < arr.length; i++) {
-        output += '<a href="#" class="color" style="color:' + arr[i] + '"></a>';
-    }
-
-    return output;
 }
