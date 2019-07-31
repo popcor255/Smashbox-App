@@ -5,35 +5,60 @@ function cacheRequest() {
     var items = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lipliner", "lipstick", "mascara", "nailpolish"];
 
     for (var i = 0; i < items.length; i++) {
-        getRequest("http://localhost/smashbox/product_type/" + items[i], function(response) {
-            response = JSON.parse(response);
-            for (var j = 0; j < response.length; j++) {
-                loadImg({ src: response[j].image_link, maxSeconds: 10 }, function(status) {
-                    if (status.err) {
-                        // handle error
-                        console.log("failed to load image");
-                        return;
-                    }
-                    console.log("image loaded");
-                    // you got the img within status.img
-                });
-            }
-        });
+        var path = "http://localhost/smashbox/product_type/" + items[i];
+        if (validation(path)) {
+            getRequest(path, function(response) {
+                response = JSON.parse(response);
+                for (var j = 0; j < response.length; j++) {
+                    loadImg({ src: response[j].image_link, maxSeconds: 10 }, function(status) {
+                        if (status.err) {
+                            // handle error
+                            console.log("failed to load image");
+                            return;
+                        }
+                        console.log("image loaded");
+                        // you got the img within status.img
+                    });
+                }
+            });
+        }
     }
 }
 
 cacheRequest();
 
+
+function validation(entry) {
+    var items = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lipliner", "lipstick", "mascara", "nailpolish"];
+    var url = "http://localhost/smashbox/product_type/";
+
+    for (var i = 0; i < items.length; i++) {
+        if (url + items[i] === entry) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
 function getRequest(url, callback) {
     // How can I use this callback?
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        if (request.readyState == 4 && request.status == 200) {
-            callback(JSON.parse(request.responseText)); // Another callback here
-        }
-    };
-    request.open("GET", url);
-    request.send();
+    if (validation(url)) {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if (request.readyState == 4) {
+                if (request.status == 200) {
+                    callback(JSON.parse(request.responseText)); // Another callback here
+                }
+            }
+        };
+
+        request.open("GET", url);
+        request.send();
+    } else {
+        callback(undefined);
+    }
 }
 
 function getProducts(name) {
@@ -84,13 +109,4 @@ function falsey(value) {
     }
 
     return "";
-}
-
-function getColors(arr) {
-    var output = "";
-    for (var i = 0; i < arr.length; i++) {
-        output += '<a href="#" class="color" style="color:' + arr[i] + '"></a>';
-    }
-
-    return output;
 }

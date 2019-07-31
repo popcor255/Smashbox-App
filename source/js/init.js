@@ -1,6 +1,6 @@
 var files = [
     "../js/utils/swPrompt.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js",
+    "../js/utils/sweetalert.min.js",
     "../js/utils/loadImage.js",
     "../js/utils/Cart.js",
     "../js/utils/api.js",
