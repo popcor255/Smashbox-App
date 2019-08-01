@@ -70,8 +70,8 @@ function loadItems(catalog) {
     var list = document.getElementsByClassName("list")[0];
     catalog = JSON.parse(catalog);
     for (i = 0; i < catalog.length; i++) {
-        list.innerHTML += ("<div class='card-container'>" +
-            "<a href='javascript:promptItem(this)' class='item_card'>" +
+        list.innerHTML += ("<div onclick='promptItem(this)' class='card-container'>" +
+            "<a href='#' class='item_card'>" +
             "<img class='card-cover' src='" + falsey(catalog[i].image_link) + "' alt='test image' />" +
             "<div class='header'>" +
             "<h3 class='item-card item-text'><b>" + falsey(catalog[i].name) + "</b></h3>" +
@@ -84,22 +84,47 @@ function loadItems(catalog) {
 }
 
 function promptItem(item) {
+    item = schemeify(item);
+
     swal({
-        title: 'Are you sure you want to add this to cart?',
-        text: "This will add the item to the cart",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes'
-    }).then((result) => {
-        addItem(item);
-    })
+            title: 'Are you sure you want to add this to cart?',
+            text: "This will add the item to the cart",
+            type: 'warning',
+            showCancelButton: true,
+            closeOnConfirm: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        },
+        function() {
+            addItem(item);
+        }
+    );
 }
 
-function addItem(item) {
-    Cart.addItem({
-        id: item
+
+function schemeify(item) {
+    var obj = {};
+    var phrase = item.childNodes[0].text.split("$");
+    var name = phrase[0];
+    var price = phrase[1];
+    var img = item.getElementsByClassName('card-cover')[0].src;
+
+    obj = {
+        "name": name,
+        "price": price,
+        "img": img
+    }
+
+    return obj;
+}
+
+async function addItem(item) {
+    await Cart.addItem({
+        id: Cart.items.length,
+        name: item.name,
+        price: item.price,
+        img: item.img
     });
 }
 
