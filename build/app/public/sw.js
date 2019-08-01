@@ -113,7 +113,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "d2f8edb5256e9675d4ca8bf8c8924c21"
+    "revision": "0198d73214bd43344711f65187959b95"
   },
   {
     "url": "js/app.js",
@@ -129,7 +129,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/utils/api.js",
-    "revision": "94325086b802abdb91ed08e881bf65eb"
+    "revision": "b8acf85c7cf80482e4c586d26154379f"
   },
   {
     "url": "js/utils/Cart.js",

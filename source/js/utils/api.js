@@ -1,5 +1,26 @@
 Cart.init();
 
+var shoppingcart = document.getElementById("shopping-cart");
+
+function loadCart() {
+    var total = 0;
+
+    for (var i = 0; i < Cart.items.length; i++) {
+        shoppingcart.innerHTML += Card(Cart.items[i]);
+        total += parseInt(Cart.items[i].price);
+    }
+
+    var price = document.getElementById("price");
+
+    if (price) {
+        price.innerText = "$" + total + ".00";
+    }
+}
+
+if (shoppingcart) {
+    loadCart();
+}
+
 function cacheRequest() {
 
     var items = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lipliner", "lipstick", "mascara", "nailpolish"];
@@ -67,20 +88,25 @@ function getProducts(name) {
 
 
 function loadItems(catalog) {
+    var price = 0;
     var list = document.getElementsByClassName("list")[0];
     catalog = JSON.parse(catalog);
     for (i = 0; i < catalog.length; i++) {
-        list.innerHTML += ("<div onclick='promptItem(this)' class='card-container'>" +
-            "<a href='#' class='item_card'>" +
-            "<img class='card-cover' src='" + falsey(catalog[i].image_link) + "' alt='test image' />" +
-            "<div class='header'>" +
-            "<h3 class='item-card item-text'><b>" + falsey(catalog[i].name) + "</b></h3>" +
-            "<p class='item-card item-text price-text'>$" + falsey(catalog[i].price) + "</p>" +
-            "</div>" +
-            "</a>" +
-            "</div>");
-
+        catalog[i].price += "0";
+        list.innerHTML += Card(catalog[i]);
     }
+}
+
+function Card(item) {
+    return ("<div onclick='promptItem(this)' class='card-container'>" +
+        "<a href='#' class='item_card'>" +
+        "<img class='card-cover' src='" + falsey(item.image_link) + "' alt='test image' />" +
+        "<div class='header'>" +
+        "<h3 class='item-card item-text'><b>" + falsey(item.name) + "</b></h3>" +
+        "<p class='item-card item-text price-text'>$" + falsey(item.price) + "</p>" +
+        "</div>" +
+        "</a>" +
+        "</div>");
 }
 
 function promptItem(item) {
@@ -108,13 +134,13 @@ function schemeify(item) {
     var phrase = item.childNodes[0].text.split("$");
     var name = phrase[0];
     var price = phrase[1];
-    var img = item.getElementsByClassName('card-cover')[0].src;
+    var image_link = item.getElementsByClassName('card-cover')[0].src;
 
     obj = {
         "name": name,
         "price": price,
-        "img": img
-    }
+        "image_link": image_link
+    };
 
     return obj;
 }
@@ -124,7 +150,7 @@ async function addItem(item) {
         id: Cart.items.length,
         name: item.name,
         price: item.price,
-        img: item.img
+        image_link: item.image_link
     });
 }
 
