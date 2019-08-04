@@ -3,6 +3,7 @@ Cart.init();
 var shoppingcart = document.getElementById("shopping-cart");
 
 function loadCart() {
+
     var total = 0;
 
     for (var i = 0; i < Cart.items.length; i++) {
@@ -48,7 +49,6 @@ function cacheRequest() {
 
 cacheRequest();
 
-
 function validation(entry) {
     var items = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lipliner", "lipstick", "mascara", "nailpolish"];
     var url = "http://localhost/smashbox/product_type/";
@@ -61,7 +61,6 @@ function validation(entry) {
 
     return false;
 }
-
 
 function getRequest(url, callback) {
     // How can I use this callback?
@@ -111,23 +110,40 @@ function Card(item) {
 
 function promptItem(item) {
     item = schemeify(item);
+    var shoppingcart = document.getElementById("shopping-cart");
 
-    swal({
-            title: 'Are you sure you want to add this to cart?',
-            text: "This will add the item to the cart",
-            type: 'warning',
-            showCancelButton: true,
-            closeOnConfirm: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes'
-        },
-        function() {
-            addItem(item);
-        }
-    );
+    if (!shoppingcart) {
+        swal({
+                title: 'Are you sure you want to add this to cart?',
+                text: "This will add the item to the cart",
+                type: 'warning',
+                showCancelButton: true,
+                closeOnConfirm: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            },
+            function() {
+                addItem(item);
+            }
+        );
+    } else {
+        swal({
+                title: 'Are you sure you want to remove this to cart?',
+                text: "This will remove the item to the cart",
+                type: 'warning',
+                showCancelButton: true,
+                closeOnConfirm: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            },
+            function() {
+                removeItem(item);
+            }
+        );
+    }
 }
-
 
 function schemeify(item) {
     var obj = {};
@@ -152,6 +168,20 @@ async function addItem(item) {
         price: item.price,
         image_link: item.image_link
     });
+}
+
+async function removeItem(item) {
+
+    for (var i = 0; i < Cart.items.length; i++) {
+        if (Cart.items[i].name == item.name) {
+            Cart.items.splice(i, 1);
+            Cart.save();
+            location.reload();
+            return true;
+        }
+    }
+
+    return false;
 }
 
 function falsey(value) {
