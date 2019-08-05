@@ -1,6 +1,6 @@
 "use strict";
 
-var files = ["../js/utils/swPrompt.js", "https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js", "../js/utils/loadImage.js", "../js/utils/Cart.js", "../js/utils/api.js", "../js/utils/alerts.js", "../js/utils/geolocation.js", "../js/utils/catalog.js"];
+var files = ["../js/utils/sweetalert.min.js", "../js/utils/alerts.js", "../js/utils/swPrompt.js", "../js/utils/loadImage.js", "../js/utils/Cart.js", "../js/utils/api.js", "../js/utils/geolocation.js", "../js/utils/catalog.js"];
 
 window.onload = function () {
   LoadScripts();

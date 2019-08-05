@@ -84,9 +84,45 @@ gulp.task("generate-service-worker", () => {
             clientsClaim: true,
             skipWaiting: true,
             runtimeCaching: [{
+                options: {
+                    // Fall back to the cache after 10 seconds.
+                    // Use a custom cache name for this route.
+                    cacheName: 'my-api-cache',
+                    // Configure custom cache expiration.
+                    expiration: {
+                        maxEntries: 5,
+                        maxAgeSeconds: 60,
+                    },
+                    // Configure background sync.
+                    backgroundSync: {
+                        name: 'myQueueName',
+                        options: {
+                            maxRetentionTime: 60 * 60,
+                        },
+                    },
+                    // Configure which responses are considered cacheable.
+                    cacheableResponse: {
+                        statuses: [0, 200],
+                        headers: { 'x-test': 'true' },
+                    },
+                    // Configure the broadcast cache update plugin.
+                    broadcastUpdate: {
+                        channelName: 'my-update-channel',
+                    },
+                    // matchOptions and fetchOptions are used to configure the handler.
+                    fetchOptions: {
+                        mode: 'no-cors',
+                    },
+                    matchOptions: {
+                        ignoreSearch: true,
+                    },
+                },
+
                 urlPattern: new RegExp('http://localhost/smashbox/product_type/'),
                 handler: 'CacheFirst'
             }]
+
+
         })
         .then(({ warnings }) => {
             // In case there are any warnings from workbox-build, log them.

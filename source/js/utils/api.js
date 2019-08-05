@@ -1,10 +1,14 @@
 Cart.init();
 
 var shoppingcart = document.getElementById("shopping-cart");
+var checkout = document.getElementById("item-container");
+var total = 0;
+var toggled = false;
 
 function loadCart() {
 
-    var total = 0;
+    var shoppingcart = document.getElementById("shopping-cart");
+    total = 0;
 
     for (var i = 0; i < Cart.items.length; i++) {
         shoppingcart.innerHTML += Card(Cart.items[i]);
@@ -14,12 +18,47 @@ function loadCart() {
     var price = document.getElementById("price");
 
     if (price) {
-        price.innerText = "$" + total + ".00";
+        price.innerText = " $" + total + ".00";
     }
 }
 
-if (shoppingcart) {
-    loadCart();
+function checkoutCart() {
+    var checkout = document.getElementById("item-container");
+    total = 0;
+
+    for (var i = 0; i < Cart.items.length; i++) {
+        checkout.innerHTML += paymentItem(Cart.items[i]);
+        total += parseInt(Cart.items[i].price);
+    }
+
+    var price = document.getElementById("price");
+
+    if (price) {
+        price.innerText = " $" + total + ".00";
+    }
+}
+
+function toggleTotalBy(amount) {
+    if (!toggled) {
+        total += 3;
+    } else {
+        total -= 3;
+    }
+
+    var price = document.getElementById("price");
+
+    if (price) {
+        price.innerText = " $" + total + ".00";
+    }
+
+    toggled = !toggled;
+}
+
+function paymentItem(item) {
+    return ('<div class="item">' +
+        '<span class="price">' + falsey(item.price) + '</span>' +
+        '<p class="item-name">' + falsey(item.name) + '</p>' +
+        '</div>');
 }
 
 function cacheRequest() {
@@ -184,10 +223,54 @@ async function removeItem(item) {
     return false;
 }
 
+window.post = function(url, data) {
+    var formBody = [];
+    for (var property in data) {
+        var encodedKey = encodeURIComponent(property);
+        var encodedValue = encodeURIComponent(data[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        body: formBody
+    })
+
+}
+
+function postCart(url) {
+    //  This gives you an HTMLElement object
+    var element = document.getElementById('form');
+    //  This gives you a string representing that element and its content
+    var html = element.outerHTML;
+    //  This gives you a JSON object that you can send with jQuery.ajax's `data`
+    // option, you can rename the property to whatever you want.
+    var data = { text: html, email: 'checkout@smashbox.com' };
+    //  This gives you a string in JSON syntax of the object above that you can 
+    // send with XMLHttpRequest.
+    console.log(data);
+    post(url, data);
+
+}
+
 function falsey(value) {
     if (value) {
         return value;
     }
 
     return "";
+}
+
+//laod Cart
+if (shoppingcart) {
+    loadCart();
+}
+
+//Checkout
+if (checkout) {
+    checkoutCart();
 }
