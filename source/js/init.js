@@ -1,7 +1,7 @@
 var files = [
+    "../js/utils/swPrompt.js",
     "../js/utils/sweetalert.min.js",
     "../js/utils/alerts.js",
-    "../js/utils/swPrompt.js",
     "../js/utils/loadImage.js",
     "../js/utils/Cart.js",
     "../js/utils/api.js",

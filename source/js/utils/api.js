@@ -258,8 +258,8 @@ function postCart(url) {
     var data = { text: html, email: 'checkout@smashbox.com' };
     //  This gives you a string in JSON syntax of the object above that you can 
     // send with XMLHttpRequest.
-    console.log(data);
     post(url, data);
+    window.location.href = '/'
 
 }
 
