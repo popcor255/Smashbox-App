@@ -10,6 +10,12 @@ function loadCart() {
     var shoppingcart = document.getElementById("shopping-cart");
     total = 0;
 
+    if (Cart.items.length == 0) {
+        shoppingcart.innerHTML = "<h1 style='margin: 8% auto;'> Your cart is empty </h1>";
+    } else {
+        shoppingcart.innerHTML = "";
+    }
+
     for (var i = 0; i < Cart.items.length; i++) {
         shoppingcart.innerHTML += Card(Cart.items[i]);
         total += parseInt(Cart.items[i].price);
