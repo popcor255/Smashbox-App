@@ -8,6 +8,7 @@ var toggled = false;
 function loadCart() {
 
     var shoppingcart = document.getElementById("shopping-cart");
+    shoppingcart.innerHTML = "";
     total = 0;
 
     if (Cart.items.length == 0) {
@@ -218,7 +219,7 @@ async function removeItem(item) {
         if (Cart.items[i].name == item.name) {
             Cart.items.splice(i, 1);
             Cart.save();
-            location.reload();
+            loadCart();
             return true;
         }
     }

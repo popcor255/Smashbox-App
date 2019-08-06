@@ -125,7 +125,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/utils/alerts.js",
-    "revision": "833381f3716f743520d6467603552ec3"
+    "revision": "f4b9a08067fca553d73de90b9c8678ff"
   },
   {
     "url": "js/utils/api.js",
