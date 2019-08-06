@@ -10,7 +10,7 @@ function serachAlert() {
         function(inputValue) {
             if (inputValue === false) return false;
             inputValue = inputValue.replace(/[\W]/g, "").toLowerCase();
-            getRequest("http://localhost/smashbox/product_type/" + inputValue, function(v) {
+            getRequest("/smashbox/product_type/" + inputValue, function(v) {
                 if (v == "[]" || v === undefined || v.length == 0) {
                     swal.showInputError("Invalid Input!");
                     return false;
