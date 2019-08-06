@@ -129,7 +129,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/utils/api.js",
-    "revision": "07dc5f0f5cb5fd4fa2b948aac46cead2"
+    "revision": "496a3eb03a0e59efbd3b98d0face5705"
   },
   {
     "url": "js/utils/Cart.js",
@@ -165,7 +165,7 @@ self.__precacheManifest = [
   },
   {
     "url": "payment.html",
-    "revision": "78907dfaf11c8b70671fcb54c84584fd"
+    "revision": "05d1127030fbbd43dd5013cbf9066278"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});

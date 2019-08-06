@@ -9,8 +9,22 @@ const process = require("process");
 const request = require("request");
 const nodemailer = require("nodemailer");
 
+/*
+const cert = fs.readFileSync('./path/to/the/cert.crt');
+const ca = fs.readFileSync('./path/to/the/ca.crt');
+const key = fs.readFileSync('./path/to/the/private.key');
 
-// Parse URL-encoded bodies (as sent by HTML forms)
+let httpsOptions = {
+    cert: cert, // fs.readFileSync('./ssl/example.crt');
+    ca: ca, // fs.readFileSync('./ssl/example.ca-bundle');
+    key: key // fs.readFileSync('./ssl/example.key');
+};
+
+*/
+
+let httpsOptions = {};
+const httpsServer = https.createServer(httpsOptions, app);
+
 app.use(express.urlencoded());
 
 // Parse JSON bodies (as sent by API clients)
@@ -45,10 +59,6 @@ app.post("/send", function(req, res) {
     sendMail(req.body.email, req.body.text).catch(console.error);
 });
 
-app.listen(80, function() {
-    console.log("Example app listening on port 80");
-});
-
 // async..await is not allowed in global scope, must use a wrapper
 async function sendMail(email, text) {
 
@@ -81,3 +91,5 @@ async function sendMail(email, text) {
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
+
+app.listen(80);

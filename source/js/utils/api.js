@@ -257,8 +257,22 @@ function postCart(url) {
     //  This gives you a string in JSON syntax of the object above that you can 
     // send with XMLHttpRequest.
     post(url, data);
-    window.location.href = '/'
 
+    swal({
+            title: 'Are you sure you want to checkout?',
+            text: "You will be taken back to the home page.",
+            type: 'success',
+            showCancelButton: true,
+            closeOnConfirm: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        },
+        function() {
+            Cart.empty();
+            window.location.href = '/';
+        }
+    );
 }
 
 function falsey(value) {
