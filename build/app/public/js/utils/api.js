@@ -72,7 +72,7 @@ function cacheRequest() {
     var items = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lipliner", "lipstick", "mascara", "nailpolish"];
 
     for (var i = 0; i < items.length; i++) {
-        var path = "http://localhost/smashbox/product_type/" + items[i];
+        var path = "/smashbox/product_type/" + items[i];
         if (validation(path)) {
             getRequest(path, function(response) {
                 response = JSON.parse(response);
@@ -96,7 +96,7 @@ cacheRequest();
 
 function validation(entry) {
     var items = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lipliner", "lipstick", "mascara", "nailpolish"];
-    var url = "http://localhost/smashbox/product_type/";
+    var url = "/smashbox/product_type/";
 
     for (var i = 0; i < items.length; i++) {
         if (url + items[i] === entry) {
@@ -109,25 +109,22 @@ function validation(entry) {
 
 function getRequest(url, callback) {
     // How can I use this callback?
-    if (validation(url)) {
-        var request = new XMLHttpRequest();
-        request.onreadystatechange = function() {
-            if (request.readyState == 4) {
-                if (request.status == 200) {
-                    callback(JSON.parse(request.responseText)); // Another callback here
-                }
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState == 4) {
+            if (request.status == 200) {
+                callback(JSON.parse(request.responseText)); // Another callback here
             }
-        };
+        }
+    };
 
-        request.open("GET", url);
-        request.send();
-    } else {
-        callback(undefined);
-    }
+    request.open("GET", url);
+    request.send();
+
 }
 
 function getProducts(name) {
-    getRequest("http://localhost/smashbox/product_type/" + name, loadItems);
+    getRequest("/smashbox/product_type/" + name, loadItems);
 }
 
 

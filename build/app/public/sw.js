@@ -129,7 +129,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/utils/api.js",
-    "revision": "f6d211538990b290109ab556435683bb"
+    "revision": "07dc5f0f5cb5fd4fa2b948aac46cead2"
   },
   {
     "url": "js/utils/Cart.js",
@@ -170,4 +170,4 @@ self.__precacheManifest = [
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/http:\/\/localhost\/smashbox\/product_type\//, new workbox.strategies.CacheFirst({ "cacheName":"my-api-cache","fetchOptions":{"mode":"no-cors"},"matchOptions":{"ignoreSearch":true}, plugins: [new workbox.expiration.Plugin({ maxEntries: 5, maxAgeSeconds: 60, purgeOnQuotaError: false }), new workbox.backgroundSync.Plugin("myQueueName", { maxRetentionTime: 3600 }), new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ], headers: { 'x-test': 'true' } }), new workbox.broadcastUpdate.Plugin({ channelName: 'my-update-channel' })] }), 'GET');
+workbox.routing.registerRoute(/http:\/\/localhost\/smashbox\/product_type\//, new workbox.strategies.CacheFirst(), 'GET');
