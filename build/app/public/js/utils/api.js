@@ -5,6 +5,13 @@ var checkout = document.getElementById("item-container");
 var total = 0;
 var toggled = false;
 
+var slideout = new Slideout({
+    'panel': document.getElementById('panel'),
+    'menu': document.getElementById('menu'),
+    'padding': 256,
+    'tolerance': 70
+});
+
 function loadCart() {
 
     var shoppingcart = document.getElementById("shopping-cart");
@@ -13,8 +20,12 @@ function loadCart() {
 
     if (Cart.items.length == 0) {
         shoppingcart.innerHTML = "<h1 style='margin: 8% auto;'> Your cart is empty </h1>";
+        var checkout_button = document.getElementById("buyer_button");
+        checkout_button.style.display = "none";
     } else {
         shoppingcart.innerHTML = "";
+        var checkout_button = document.getElementById("buyer_button");
+        checkout_button.style.display = "initial";
     }
 
     for (var i = 0; i < Cart.items.length; i++) {

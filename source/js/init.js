@@ -1,4 +1,5 @@
 var files = [
+    "../js/utils/slideout.js",
     "../js/utils/swPrompt.js",
     "../js/utils/sweetalert.min.js",
     "../js/utils/alerts.js",

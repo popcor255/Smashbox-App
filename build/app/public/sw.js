@@ -61,7 +61,7 @@ self.__precacheManifest = [
   },
   {
     "url": "css/styles.css",
-    "revision": "2bca5ec3c685e9221d5b21bea25d8e17"
+    "revision": "a9ed92d17fea10847652f0457c6140ef"
   },
   {
     "url": "images/icons/icon-128x128.png",
@@ -113,15 +113,15 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "46d37827fd8ab40f26fd7e3134bd1801"
+    "revision": "9af39a94e5fa81179e9660f02998b397"
   },
   {
     "url": "js/app.js",
-    "revision": "918340642c9030e78b79897a62ae4082"
+    "revision": "d0ea4b31489b88ff24f43fdb2ddd2e36"
   },
   {
     "url": "js/init.js",
-    "revision": "1ea67d2ad27ea5c5b379c27dd650533d"
+    "revision": "26ce16d2cde31d1ce26ea9e6ca935278"
   },
   {
     "url": "js/utils/alerts.js",
@@ -129,7 +129,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/utils/api.js",
-    "revision": "496a3eb03a0e59efbd3b98d0face5705"
+    "revision": "52ba9164299778adc50ca9de1dc218f3"
   },
   {
     "url": "js/utils/Cart.js",
@@ -150,6 +150,10 @@ self.__precacheManifest = [
   {
     "url": "js/utils/mailer.js",
     "revision": "3ebd72ba1c1c5209d11d8652fe7766c2"
+  },
+  {
+    "url": "js/utils/slideout.js",
+    "revision": "8d02b37e369a41a9cfe3d9f4b2204770"
   },
   {
     "url": "js/utils/sweetalert.min.js",
