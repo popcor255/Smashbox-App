@@ -87,6 +87,10 @@ body {
     overflow: hidden;
 }
 
+.mainMenu li {
+    text-decoration: none;
+}
+
 .btn:before {
     content: '';
     position: absolute;
@@ -146,6 +150,10 @@ body {
 
 .subMenu a:last-child {
     border: none;
+}
+
+.item {
+    list-style-type: none;
 }
 
 .item:target .subMenu {
