@@ -20,11 +20,6 @@ let httpsOptions = {
     key: key // fs.readFileSync('./ssl/example.key');
 };
 
-
-const httpsServer = https.createServer(httpsOptions, app).listen(80, function() {
-    console.log("App is running on port 80.");
-});
-
 app.use(express.urlencoded());
 
 // Parse JSON bodies (as sent by API clients)
@@ -91,3 +86,8 @@ async function sendMail(email, text) {
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
+
+
+const httpsServer = https.createServer(httpsOptions, app);
+
+httpServer.listen(80);
