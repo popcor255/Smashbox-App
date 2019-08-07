@@ -61,7 +61,7 @@ self.__precacheManifest = [
   },
   {
     "url": "css/styles.css",
-    "revision": "17d966b16dfa0236f9e1fb87be8ab90f"
+    "revision": "b82ccbce5f8f52281716244761f2c2f3"
   },
   {
     "url": "images/icons/icon-128x128.png",
@@ -161,7 +161,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/utils/swInit.js",
-    "revision": "b813fc2b0fa2c968fb8d87bdc879be9e"
+    "revision": "813d518814c5f381e7c6d32297cab3ab"
   },
   {
     "url": "js/utils/swPrompt.js",
@@ -174,4 +174,4 @@ self.__precacheManifest = [
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/http:\/\/localhost\/smashbox\/product_type\//, new workbox.strategies.CacheFirst(), 'GET');
+workbox.routing.registerRoute(/\/smashbox\/product_type\//, new workbox.strategies.CacheFirst(), 'GET');

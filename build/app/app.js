@@ -4,26 +4,34 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const fs = require("fs");
+const http = require('http');
 const https = require("https");
 const process = require("process");
 const request = require("request");
 const nodemailer = require("nodemailer");
 
-/*
-const cert = fs.readFileSync('./path/to/the/cert.crt');
-const ca = fs.readFileSync('./path/to/the/ca.crt');
-const key = fs.readFileSync('./path/to/the/private.key');
+const cert = fs.readFileSync('./ssl/www_actuallythe_best.crt', 'utf8');
+const key = fs.readFileSync('./ssl/example_com.key');
+
 
 let httpsOptions = {
     cert: cert, // fs.readFileSync('./ssl/example.crt');
-    ca: ca, // fs.readFileSync('./ssl/example.ca-bundle');
     key: key // fs.readFileSync('./ssl/example.key');
 };
 
-*/
 
-let httpsOptions = {};
-const httpsServer = https.createServer(httpsOptions, app);
+https.createServer(httpsOptions, app).listen(443);
+
+app.use(function(req, res, next) {
+    if (req.secure) {
+        next();
+    } else {
+        res.redirect('https://' + req.headers.host + req.url);
+    }
+});
+
+
+http.createServer(app).listen(80);
 
 app.use(express.urlencoded());
 
@@ -77,9 +85,9 @@ async function sendMail(email, text) {
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
-        from: '"Fred Foo 👻" <foo@example.com>', // sender address
+        from: '"Fred Foo ??" <foo@example.com>', // sender address
         to: email, // list of receivers
-        subject: "Checkout ✔", // Subject line
+        subject: "Checkout ?", // Subject line
         text: text, // plain text body
         html: text // html body
     });
@@ -90,6 +98,5 @@ async function sendMail(email, text) {
     // Preview only available when sending through an Ethereal account
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
-
-app.listen(80);
