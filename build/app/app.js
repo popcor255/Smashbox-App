@@ -19,26 +19,20 @@ let httpsOptions = {
     key: key // fs.readFileSync('./ssl/example.key');
 };
 
-//const httpsServer = https.createServer(httpsOptions, app).listen(80);
 
 https.createServer(httpsOptions, app).listen(443);
 
-app.get('/', function(req, res) {
-    console.log("went");
-    res.send("Hello World!");
-});
-
-/*
 app.use(function(req, res, next) {
     if (req.secure) {
         next();
     } else {
         res.redirect('https://' + req.headers.host + req.url);
     }
-});*/
+});
+
 //viewed at http://localhost:3000
 
-//app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public"));
 
 //viewed at http://localhost:3000
 app.get("/api/:id", function(req, res) {
