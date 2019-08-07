@@ -28,13 +28,14 @@ app.get('/', function(req, res) {
     res.send("Hello World!");
 });
 
+/*
 app.use(function(req, res, next) {
     if (req.secure) {
         next();
     } else {
         res.redirect('https://' + req.headers.host + req.url);
     }
-});
+});*/
 //viewed at http://localhost:3000
 
 //app.use(express.static(__dirname + "/public"));
