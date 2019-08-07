@@ -5,13 +5,6 @@ var checkout = document.getElementById("item-container");
 var total = 0;
 var toggled = false;
 
-var slideout = new Slideout({
-    'panel': document.getElementById('panel'),
-    'menu': document.getElementById('menu'),
-    'padding': 256,
-    'tolerance': 70
-});
-
 function loadCart() {
 
     var shoppingcart = document.getElementById("shopping-cart");
