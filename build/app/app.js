@@ -21,7 +21,7 @@ let httpsOptions = {
 
 //const httpsServer = https.createServer(httpsOptions, app).listen(80);
 
-https.createServer(httpsOptions, app).listen(80);
+https.createServer(httpsOptions, app).listen(443);
 
 app.get('/', function(req, res) {
     console.log("went");
