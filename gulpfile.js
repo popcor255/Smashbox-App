@@ -87,8 +87,6 @@ gulp.task("generate-service-worker", () => {
                 urlPattern: new RegExp('https://www.actuallythe.best/smashbox/product_type/'),
                 handler: 'CacheFirst'
             }]
-
-
         })
         .then(({ warnings }) => {
             // In case there are any warnings from workbox-build, log them.
