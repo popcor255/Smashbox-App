@@ -9,6 +9,7 @@ services:
     # Host port proxy to 443
     ports:
       - '443:443'
+      - '80:80'
     volumes:
       - './app/data:/app/data'
     environment:
