@@ -61,7 +61,7 @@ self.__precacheManifest = [
   },
   {
     "url": "css/styles.css",
-    "revision": "17d966b16dfa0236f9e1fb87be8ab90f"
+    "revision": "b82ccbce5f8f52281716244761f2c2f3"
   },
   {
     "url": "images/icons/icon-128x128.png",
