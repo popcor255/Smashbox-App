@@ -18,7 +18,7 @@ function loadCart() {
     } else {
         shoppingcart.innerHTML = "";
         var checkout_button = document.getElementById("buyer_button");
-        checkout_button.style.display = "initial";
+        checkout_button.style.display = "inherit";
     }
 
     for (var i = 0; i < Cart.items.length; i++) {
