@@ -6,9 +6,9 @@ services:
         context: './app'
         dockerfile: 'Dockerfile'
 
-    # Host port proxy to 80
+    # Host port proxy to 443
     ports:
-      - '80:80'
+      - '443:443'
     volumes:
       - './app/data:/app/data'
     environment:

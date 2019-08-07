@@ -33,10 +33,14 @@ app.use(function(req, res, next) {
 
 http.createServer(app).listen(80);
 
-app.use(express.urlencoded());
+app.use(function(req, res, next) {
+    if (req.secure) {
+        next();
+    } else {
+        res.redirect('https://' + req.headers.host + req.url);
+    }
+});
 
-// Parse JSON bodies (as sent by API clients)
-app.use(express.json());
 //viewed at http://localhost:3000
 
 app.use(express.static(__dirname + "/public"));

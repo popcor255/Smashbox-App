@@ -1,110 +1,108 @@
-var gulp = require("gulp");
-var minifycss = require("gulp-clean-css");
-var browserSync = require("browser-sync").create();
-var uglify = require("gulp-uglify");
-var concatify = require("gulp-concat");
-var sourcemaps = require("gulp-sourcemaps");
-var minifyhtml = require("gulp-minify-html");
-var workbox = require("workbox-build");
-var babel = require("gulp-babel");
-var jsdoc = require("gulp-jsdoc3");
-var process = require("process");
-var dist = "./build/app";
+"use strict";
 
-//
-// Paths to various files
-var paths = {
-    dependencies: ["source/js/**/*"],
-    scripts: ["source/js/*.js"],
-    styles: ["source/css/**/*.css"],
-    images: ["source/images/**/*"],
-    content: ["source/*.html", "source/manifest.json"],
-    package: ["package.json", "package-lock.json", "README.md"]
+const express = require("express");
+const path = require("path");
+const app = express();
+const fs = require("fs");
+const http = require('http');
+const https = require("https");
+const process = require("process");
+const request = require("request");
+const nodemailer = require("nodemailer");
+
+const cert = fs.readFileSync('./ssl/www_actuallythe_best.crt', 'utf8');
+const key = fs.readFileSync('./ssl/example_com.key');
+
+
+let httpsOptions = {
+    cert: cert, // fs.readFileSync('./ssl/example.crt');
+    key: key // fs.readFileSync('./ssl/example.key');
 };
 
-//Create Documentation based off javascript
-gulp.task("doc", function(cb) {
-    var config = require("./jsdoc.json");
-    return gulp
-        .src(["README.md", paths.scripts], { read: false })
-        .pipe(jsdoc(config, cb));
+
+https.createServer(httpsOptions, app).listen(443);
+
+app.use(function(req, res, next) {
+    if (req.secure) {
+        next();
+    } else {
+        res.redirect('https://' + req.headers.host + req.url);
+    }
 });
 
-// Compress css files and outputs them to app/css/*.css
-gulp.task("styles", function() {
-    return gulp
-        .src(paths.styles)
-        .pipe(minifycss({ compatibility: "ie8" }))
-        .pipe(gulp.dest(dist + "/public/css/"));
+
+http.createServer(app).listen(80);
+
+app.use(function(req, res, next) {
+    if (req.secure) {
+        next();
+    } else {
+        res.redirect('https://' + req.headers.host + req.url);
+    }
 });
 
-// Concats & minifies js files and outputs them to app/js/app.js
-gulp.task("scripts", function() {
-    return gulp
-        .src(paths.scripts)
-        .pipe(sourcemaps.init())
-        .pipe(concatify("app.js"))
-        .pipe(
-            babel({
-                presets: ["@babel/preset-env"]
-            })
-        )
-        .pipe(gulp.dest(dist + "/public/js/"));
+//viewed at http://localhost:3000
+
+app.use(express.static(__dirname + "/public"));
+
+//viewed at http://localhost:3000
+app.get("/api/:id", function(req, res) {
+    res.sendFile(path.join(__dirname + "/manifest.json"));
 });
 
-gulp.task("dependencies", function() {
-    return gulp.src(paths.dependencies).pipe(gulp.dest(dist + "/public/js/"));
+app.get("/smashbox/product_type/:id", function(req, res, next) {
+    request("http://api:3001/smashbox/product_type/" + req.params.id, function(
+        error,
+        response,
+        body
+    ) {
+        res.json(body);
+    });
 });
 
-// Minifies our HTML files and outputs them to app/*.html
-gulp.task("content", function() {
-    return gulp
-        .src(paths.content)
-        .pipe(
-            minifyhtml({
-                empty: true,
-                quotes: true
-            })
-        )
-        .pipe(gulp.dest(dist + "/public"));
+//viewed at http://localhost:3000
+app.get("/catalog/:id", function(req, res) {
+    res.sendFile(path.join(__dirname + "/public/catalog.html"));
 });
 
-// Optimizes our image files and outputs them to app/image/*
-gulp.task("images", function() {
-    return gulp.src(paths.images).pipe(gulp.dest(dist + "/public/images/"));
+//viewed at http://localhost:3000
+app.post("/send", function(req, res) {
+    console.log(req.body);
+    sendMail(req.body.email, req.body.text).catch(console.error);
 });
 
-// Generate Service Workers
-gulp.task("generate-service-worker", () => {
-    return workbox
-        .generateSW({
-            globDirectory: dist + "/public",
-            globPatterns: ["**/*.{html,js,css,jpg,png}"],
-            swDest: dist + "/public/sw.js",
-            clientsClaim: true,
-            skipWaiting: true,
-            runtimeCaching: [{
-                urlPattern: new RegExp('/smashbox/product_type/'),
-                handler: 'CacheFirst'
-            }]
+// async..await is not allowed in global scope, must use a wrapper
+async function sendMail(email, text) {
 
+    // Generate test SMTP service account from ethereal.email
+    // Only needed if you don't have a real mail account for testing
+    let testAccount = await nodemailer.createTestAccount();
 
-        })
-        .then(({ warnings }) => {
-            // In case there are any warnings from workbox-build, log them.
-            for (const warning of warnings) {
-                console.warn(warning);
-            }
-            console.info("Service worker generation completed.");
-        })
-        .catch(error => {
-            console.warn("Service worker generation failed:", error);
-        });
-});
+    let transporter = nodemailer.createTransport({
+        host: "smtp.mailtrap.io",
+        port: 2525,
+        auth: {
+            user: "1f25fdd30d72aa",
+            pass: "448a1ccafa4227"
+        }
+    });
 
-//package.json, manifest and package-lock.json to app file,
-gulp.task("package", function() {
-    return gulp.src(paths.package).pipe(gulp.dest(dist));
+    // send mail with defined transport object
+    let info = await transporter.sendMail({
+        from: '"Fred Foo ??" <foo@example.com>', // sender address
+        to: email, // list of receivers
+        subject: "Checkout ?", // Subject line
+        text: text, // plain text body
+        html: text // html body
+    });
+
+    console.log("Message sent: %s", info.messageId);
+    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+    // Preview only available when sending through an Ethereal account
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 });
 
 // Watches for changes to our files and executes required scripts
