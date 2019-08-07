@@ -161,9 +161,9 @@ function promptItem(item) {
 
     if (!shoppingcart) {
         swal({
-                title: 'Are you sure you want to add this to cart?',
-                text: "This will add the item to the cart",
-                type: 'warning',
+                title: 'This is added to your cart',
+                text: "Click cancel to Undo",
+                type: 'success',
                 showCancelButton: true,
                 closeOnConfirm: true,
                 confirmButtonColor: '#3085d6',
