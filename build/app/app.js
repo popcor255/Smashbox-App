@@ -20,10 +20,6 @@ let httpsOptions = {
     key: key // fs.readFileSync('./ssl/example.key');
 };
 
-app.use(express.urlencoded());
-
-// Parse JSON bodies (as sent by API clients)
-app.use(express.json());
 //viewed at http://localhost:3000
 
 app.use(express.static(__dirname + "/public"));
