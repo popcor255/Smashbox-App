@@ -84,7 +84,7 @@ gulp.task("generate-service-worker", () => {
             clientsClaim: true,
             skipWaiting: true,
             runtimeCaching: [{
-                urlPattern: new RegExp('https://www.actuallythe.best/'),
+                urlPattern: new RegExp('https://www.actuallythe.best/smashbox/product_type/'),
                 handler: 'CacheFirst'
             }]
         })
