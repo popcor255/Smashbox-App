@@ -9,14 +9,12 @@ const process = require("process");
 const request = require("request");
 const nodemailer = require("nodemailer");
 
-const cert = fs.readFileSync('./ssl/www_actuallythe_best.crt');
-const ca = fs.readFileSync('./ssl/www_actuallythe_best.ca-bundle');
+const cert = fs.readFileSync('./ssl/www_actuallythe_best.crt', 'utf8');
 const key = fs.readFileSync('./ssl/example_com.key');
 
 
 let httpsOptions = {
     cert: cert, // fs.readFileSync('./ssl/example.crt');
-    ca: ca, // fs.readFileSync('./ssl/example.ca-bundle');
     key: key // fs.readFileSync('./ssl/example.key');
 };
 
