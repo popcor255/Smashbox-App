@@ -20,6 +20,15 @@ let httpsOptions = {
     key: key // fs.readFileSync('./ssl/example.key');
 };
 
+const httpsServer = https.createServer(httpsOptions, app).listen(80);
+
+app.use(function(req, res, next) {
+    if (req.secure) {
+        next();
+    } else {
+        res.redirect('https://' + req.headers.host + req.url);
+    }
+});
 //viewed at http://localhost:3000
 
 app.use(express.static(__dirname + "/public"));
@@ -82,8 +91,3 @@ async function sendMail(email, text) {
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
-
-
-const httpsServer = https.createServer(httpsOptions, app);
-
-httpsServer.listen(80);
