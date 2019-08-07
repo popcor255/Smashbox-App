@@ -174,4 +174,4 @@ self.__precacheManifest = [
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/http:\/\/localhost\/smashbox\/product_type\//, new workbox.strategies.CacheFirst(), 'GET');
+workbox.routing.registerRoute(/https:\/\/www.actuallythe.best\/smashbox\/product_type\//, new workbox.strategies.CacheFirst(), 'GET');
