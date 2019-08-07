@@ -4,6 +4,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const fs = require("fs");
+const http = require('http');
 const https = require("https");
 const process = require("process");
 const request = require("request");
@@ -13,12 +14,19 @@ const cert = fs.readFileSync('./ssl/www_actuallythe_best.crt', 'utf8');
 const key = fs.readFileSync('./ssl/example_com.key');
 
 
+/*
 let httpsOptions = {
     cert: cert, // fs.readFileSync('./ssl/example.crt');
     key: key // fs.readFileSync('./ssl/example.key');
-};
+};*/
 
-const httpsServer = https.createServer(httpsOptions, app).listen(80);
+//const httpsServer = https.createServer(httpsOptions, app).listen(80);
+
+http.createServer(app).listen(80);
+
+app.get('/', function(req, res) {
+    res.send("Hello World!");
+});
 
 app.use(function(req, res, next) {
     if (req.secure) {
@@ -29,7 +37,7 @@ app.use(function(req, res, next) {
 });
 //viewed at http://localhost:3000
 
-app.use(express.static(__dirname + "/public"));
+//app.use(express.static(__dirname + "/public"));
 
 //viewed at http://localhost:3000
 app.get("/api/:id", function(req, res) {
