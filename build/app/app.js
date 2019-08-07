@@ -13,15 +13,15 @@ const nodemailer = require("nodemailer");
 const cert = fs.readFileSync('./ssl/www_actuallythe_best.crt', 'utf8');
 const key = fs.readFileSync('./ssl/example_com.key');
 
-/*
+
 let httpsOptions = {
     cert: cert, // fs.readFileSync('./ssl/example.crt');
     key: key // fs.readFileSync('./ssl/example.key');
-};*/
+};
 
 //const httpsServer = https.createServer(httpsOptions, app).listen(80);
 
-http.createServer(app).listen(80);
+https.createServer(httpsOptions, app).listen(80);
 
 app.get('/', function(req, res) {
     console.log("went");
