@@ -9,8 +9,8 @@ const process = require("process");
 const request = require("request");
 const nodemailer = require("nodemailer");
 
-const cert = fs.readFileSync('./ssl/www_actuallythe_best.crt');
-const ca = fs.readFileSync('./ssl/www_actuallythe_best.ca-bundle');
+const cert = fs.readFileSync('./ssl/example_com.crt');
+const ca = fs.readFileSync('./ssl/www_actuallythe_best.crt');
 const key = fs.readFileSync('./ssl/example_com.key');
 
 
@@ -90,4 +90,4 @@ async function sendMail(email, text) {
 
 const httpsServer = https.createServer(httpsOptions, app);
 
-httpServer.listen(80);
+httpsServer.listen(80);
