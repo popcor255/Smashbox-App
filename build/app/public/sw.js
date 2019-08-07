@@ -61,7 +61,7 @@ self.__precacheManifest = [
   },
   {
     "url": "css/styles.css",
-    "revision": "43352344671e94fbf68b60d20cbc0e50"
+    "revision": "17d966b16dfa0236f9e1fb87be8ab90f"
   },
   {
     "url": "images/icons/icon-128x128.png",
@@ -169,7 +169,7 @@ self.__precacheManifest = [
   },
   {
     "url": "payment.html",
-    "revision": "05d1127030fbbd43dd5013cbf9066278"
+    "revision": "e6fe2c32f3cb7bf4edfca2a206acfcb8"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
