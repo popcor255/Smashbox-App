@@ -176,8 +176,8 @@ function promptItem(item) {
         );
     } else {
         swal({
-                title: 'Are you sure you want to remove this to cart?',
-                text: "This will remove the item to the cart",
+                title: 'Are you sure you want to remove this from the cart?',
+                text: "This will remove the item from the cart",
                 type: 'warning',
                 showCancelButton: true,
                 closeOnConfirm: true,
