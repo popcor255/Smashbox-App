@@ -25,7 +25,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [
   {
     "url": "catalog.html",
-    "revision": "a138ad16402b8bb34b4d1748b04769d0"
+    "revision": "1dbc3bccdf7ae7ac7244ff08f7f0e09a"
   },
   {
     "url": "css/bootstrap/bootstrap-grid.css",
@@ -61,7 +61,7 @@ self.__precacheManifest = [
   },
   {
     "url": "css/styles.css",
-    "revision": "d354329175a2192e0d960a5fdd4fd430"
+    "revision": "b82ccbce5f8f52281716244761f2c2f3"
   },
   {
     "url": "images/icons/icon-128x128.png",
@@ -113,7 +113,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "fe38f71c8fe2be1b48398cd62b00d25c"
+    "revision": "241a98724d2e2445a0c7fdc1be5857a5"
   },
   {
     "url": "js/app.js",
@@ -169,7 +169,7 @@ self.__precacheManifest = [
   },
   {
     "url": "payment.html",
-    "revision": "30570695617059e290a8a2349d1c9f89"
+    "revision": "e6fe2c32f3cb7bf4edfca2a206acfcb8"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
