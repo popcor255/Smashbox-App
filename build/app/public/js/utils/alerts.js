@@ -8,6 +8,9 @@ function serachAlert() {
             inputPlaceholder: "Lets find what your looking for"
         },
         function(inputValue) {
+            // remove these events;
+            window.onkeydown = null;
+            window.onfocus = null;
             if (inputValue === false) return false;
             inputValue = inputValue.replace(/[\W]/g, "").toLowerCase();
             getRequest("/smashbox/product_type/" + inputValue, function(v) {
