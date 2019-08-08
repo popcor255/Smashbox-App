@@ -166,6 +166,7 @@ function promptItem(item) {
                 type: 'success',
                 showCancelButton: true,
                 closeOnConfirm: true,
+                confirmButtonText: 'Ok',
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes'
