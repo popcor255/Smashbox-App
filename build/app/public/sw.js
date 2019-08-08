@@ -25,7 +25,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [
   {
     "url": "catalog.html",
-    "revision": "a138ad16402b8bb34b4d1748b04769d0"
+    "revision": "e08f1407422496db8dcf7287823b9c10"
   },
   {
     "url": "css/bootstrap/bootstrap-grid.css",
@@ -113,7 +113,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "fe38f71c8fe2be1b48398cd62b00d25c"
+    "revision": "8fb5ddfa7c74c1149cce6e6cc210ec8e"
   },
   {
     "url": "js/app.js",

@@ -20,6 +20,10 @@ input:after {
     user-select: initial;
 }
 
+#buyer_button {
+    display: inherit;
+}
+
 #logo {
     background-color: #0f0f0f;
 }
