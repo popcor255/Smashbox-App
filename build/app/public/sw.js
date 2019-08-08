@@ -161,7 +161,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/utils/swInit.js",
-    "revision": "813d518814c5f381e7c6d32297cab3ab"
+    "revision": "503c58bf3f31fc8eeb8cd480a6f2261c"
   },
   {
     "url": "js/utils/swPrompt.js",

@@ -1,71 +1,172 @@
-"use strict";
+< !DOCTYPE html >
+    <
+    html lang = "en" >
 
-const express = require("express");
-const path = require("path");
-const app = express();
-const fs = require("fs");
-const http = require('http');
-const https = require("https");
-const process = require("process");
-const request = require("request");
-const nodemailer = require("nodemailer");
+    <
+    head >
+    <
+    title > Smashbox Checkout < /title> <
+    link rel = "stylesheet"
+href = "../css/bootstrap/bootstrap.css" >
+    <
+    link rel = "stylesheet"
+href = "../css/styles.css" >
+    <
+    script src = '../js/init.js' > < /script> <
+    script src = '../js/utils/swInit.js' > < /script> <
+    link rel = "stylesheet"
+href = "https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" >
+    <
+    script src = "https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js" > < /script> <
+    script src = "https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js" > < /script>
 
-const cert = fs.readFileSync('./ssl/www_actuallythe_best.crt', 'utf8');
-const key = fs.readFileSync('./ssl/example_com.key');
+<
+meta name = "title"
+content = "Smashbox - Digital Checkout" >
+    <
+    meta name = "description"
+content = "Shop makeup at Smashbox. Digital in-store experience." >
+    <
+    meta name = "keywords"
+content = "Smashbox, makeup" >
+    <
+    meta name = "robots"
+content = "index, follow" >
+    <
+    meta http - equiv = "Content-Type"
+content = "text/html; charset=utf-8" >
+    <
+    meta name = "language"
+content = "English" >
 
+    <
+    link rel = "manifest"
+href = "../manifest.json" >
 
-let httpsOptions = {
-    cert: cert, // fs.readFileSync('./ssl/example.crt');
-    key: key // fs.readFileSync('./ssl/example.key');
-};
+    <
+    meta name = "mobile-web-app-capable"
+content = "yes" >
+    <
+    meta name = "apple-mobile-web-app-capable"
+content = "yes" >
+    <
+    meta name = "application-name"
+content = "Smashbox Checkout" >
+    <
+    meta name = "apple-mobile-web-app-title"
+content = "Smashbox Checkout" >
+    <
+    meta name = "theme-color"
+content = "#ffffff" >
+    <
+    meta name = "msapplication-navbutton-color"
+content = "#ffffff" >
+    <
+    meta name = "apple-mobile-web-app-status-bar-style"
+content = "black-translucent" >
+    <
+    meta name = "msapplication-starturl"
+content = "/" >
+    <
+    meta name = "viewport"
+content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" / >
 
+    <
+    link rel = "icon"
+type = "image/png"
+sizes = "512x512"
+href = "/images/icons/icon-512x512.png" >
+    <
+    link rel = "apple-touch-icon"
+type = "image/png"
+sizes = "512x512"
+href = "/images/icons/icon-512x512.png" >
+    <
+    link rel = "icon"
+type = "image/png"
+sizes = "384x384"
+href = "/images/icons/icon-384x384.png" >
+    <
+    link rel = "apple-touch-icon"
+type = "image/png"
+sizes = "384x384"
+href = "/images/icons/icon-384x384.png" >
+    <
+    link rel = "icon"
+type = "image/png"
+sizes = "192x192"
+href = "/images/icons/icon-192x192.png" >
+    <
+    link rel = "apple-touch-icon"
+type = "image/png"
+sizes = "192x192"
+href = "/images/icons/icon-192x192.png" >
+    <
+    link rel = "icon"
+type = "image/png"
+sizes = "152x152"
+href = "/images/icons/icon-152x152.png" >
+    <
+    link rel = "apple-touch-icon"
+type = "image/png"
+sizes = "152x152"
+href = "/images/icons/icon-152x152.png" >
+    <
+    /head>
 
-https.createServer(httpsOptions, app).listen(443);
+<
+body >
+    <
+    div id = "master-container" >
+    <
+    ul id = "title"
+class = "navbar" >
+    <
+    li >
+    <
+    button id = "logo"
+type = "button"
+class = "btn btn-dark"
+onclick = "serachAlert()" > Search < /button> <
+    /li> <
+    li >
+    <
+    a href = "/ "
+class = "active " >
+    <
+    img class = "navbar-image "
+src = "./images/small_logo.png "
+alt = "smashbox " / >
+    <
+    /a> <
+    /li> <
+    /ul>
 
-app.use(function(req, res, next) {
-    if (req.secure) {
-        next();
-    } else {
-        res.redirect('https://' + req.headers.host + req.url);
-    }
-});
+<
+div class = "container " >
+    <
+    div id = "shopping-cart "
+class = "list " >
+    <
+    /div> <
+    /div>
 
+<
+div id = "buyer_button "
+class = "buy_button " >
+    <
+    a href = "./payment.html " >
+    <
+    div id = "price "
+class = "submit " > $0 .00 < /div> <
+    div class = "price " > BUY < /div> <
+    /a> <
+    /div> <
+    /div> <
+    /body>
 
-http.createServer(app).listen(80);
-
-app.use(function(req, res, next) {
-    if (req.secure) {
-        next();
-    } else {
-        res.redirect('https://' + req.headers.host + req.url);
-    }
-});
-
-//viewed at http://localhost:3000
-
-app.use(express.static(__dirname + "/public"));
-
-//viewed at http://localhost:3000
-app.get("/api/:id", function(req, res) {
-    res.sendFile(path.join(__dirname + "/manifest.json"));
-});
-
-app.get("/smashbox/product_type/:id", function(req, res, next) {
-    request("http://api:3001/smashbox/product_type/" + req.params.id, function(
-        error,
-        response,
-        body
-    ) {
-        res.json(body);
-    });
-});
-
-//viewed at http://localhost:3000
-app.get("/catalog/:id", function(req, res) {
-    res.sendFile(path.join(__dirname + "/public/catalog.html"));
-});
-
-//viewed at http://localhost:3000
+<
+/htmled at http:/ / localhost: 3000
 app.post("/send", function(req, res) {
     console.log(req.body);
     sendMail(req.body.email, req.body.text).catch(console.error);
