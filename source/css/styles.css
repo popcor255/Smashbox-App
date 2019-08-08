@@ -34,6 +34,10 @@
     cursor: pointer;
 }
 
+body {
+    -webkit-tap-highlight-color: transparent;
+}
+
 .navbar-image {
     display: block;
     margin-left: auto;
