@@ -2,7 +2,7 @@
   "dependencies": {
     "bootstrap-sweetalert": "^1.0.1",
     "coverage": "^0.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fs": "^0.0.1-security",
     "gulp-jest": "^4.0.2",
     "gulp-jsdoc3": "^2.0.0",
